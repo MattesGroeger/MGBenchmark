@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21FB4F8C16FCBA7A00A9CA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */; };
+		21FB4F9116FCBA7A00A9CA26 /* MGBenchmark.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */; };
+		21FB4F9316FCBA7A00A9CA26 /* MGBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */; };
+		21FB4F9B16FCBA7B00A9CA26 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */; };
+		21FB4F9D16FCBA7B00A9CA26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */; };
+		21FB4F9E16FCBA7B00A9CA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */; };
+		21FB4FA116FCBA7B00A9CA26 /* libMGBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */; };
+		21FB4FA716FCBA7B00A9CA26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */; };
+		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21FB4F9F16FCBA7B00A9CA26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21FB4F8016FCBA7A00A9CA26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21FB4F8716FCBA7A00A9CA26;
+			remoteInfo = MGBenchmark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		21FB4F8616FCBA7A00A9CA26 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				21FB4F9116FCBA7A00A9CA26 /* MGBenchmark.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGBenchmark.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		21FB4F8F16FCBA7A00A9CA26 /* MGBenchmark-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGBenchmark-Prefix.pch"; sourceTree = "<group>"; };
+		21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBenchmark.h; sourceTree = "<group>"; };
+		21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmark.m; sourceTree = "<group>"; };
+		21FB4F9916FCBA7B00A9CA26 /* MGBenchmarkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGBenchmarkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		21FB4FA416FCBA7B00A9CA26 /* MGBenchmarkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGBenchmarkTests-Info.plist"; sourceTree = "<group>"; };
+		21FB4FA616FCBA7B00A9CA26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		21FB4FA816FCBA7B00A9CA26 /* MGBenchmarkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkTests.h; sourceTree = "<group>"; };
+		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		21FB4F8516FCBA7A00A9CA26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FB4F8C16FCBA7A00A9CA26 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21FB4F9516FCBA7B00A9CA26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FB4F9B16FCBA7B00A9CA26 /* SenTestingKit.framework in Frameworks */,
+				21FB4F9D16FCBA7B00A9CA26 /* UIKit.framework in Frameworks */,
+				21FB4F9E16FCBA7B00A9CA26 /* Foundation.framework in Frameworks */,
+				21FB4FA116FCBA7B00A9CA26 /* libMGBenchmark.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		21FB4F7F16FCBA7A00A9CA26 = {
+			isa = PBXGroup;
+			children = (
+				21FB4F8D16FCBA7A00A9CA26 /* MGBenchmark */,
+				21FB4FA216FCBA7B00A9CA26 /* MGBenchmarkTests */,
+				21FB4F8A16FCBA7A00A9CA26 /* Frameworks */,
+				21FB4F8916FCBA7A00A9CA26 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		21FB4F8916FCBA7A00A9CA26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */,
+				21FB4F9916FCBA7B00A9CA26 /* MGBenchmarkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		21FB4F8A16FCBA7A00A9CA26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */,
+				21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */,
+				21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		21FB4F8D16FCBA7A00A9CA26 /* MGBenchmark */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */,
+				21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */,
+				21FB4F8E16FCBA7A00A9CA26 /* Supporting Files */,
+			);
+			path = MGBenchmark;
+			sourceTree = "<group>";
+		};
+		21FB4F8E16FCBA7A00A9CA26 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4F8F16FCBA7A00A9CA26 /* MGBenchmark-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		21FB4FA216FCBA7B00A9CA26 /* MGBenchmarkTests */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4FA816FCBA7B00A9CA26 /* MGBenchmarkTests.h */,
+				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */,
+				21FB4FA316FCBA7B00A9CA26 /* Supporting Files */,
+			);
+			path = MGBenchmarkTests;
+			sourceTree = "<group>";
+		};
+		21FB4FA316FCBA7B00A9CA26 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				21FB4FA416FCBA7B00A9CA26 /* MGBenchmarkTests-Info.plist */,
+				21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		21FB4F8716FCBA7A00A9CA26 /* MGBenchmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21FB4FAD16FCBA7B00A9CA26 /* Build configuration list for PBXNativeTarget "MGBenchmark" */;
+			buildPhases = (
+				21FB4F8416FCBA7A00A9CA26 /* Sources */,
+				21FB4F8516FCBA7A00A9CA26 /* Frameworks */,
+				21FB4F8616FCBA7A00A9CA26 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGBenchmark;
+			productName = MGBenchmark;
+			productReference = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		21FB4F9816FCBA7B00A9CA26 /* MGBenchmarkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21FB4FB016FCBA7B00A9CA26 /* Build configuration list for PBXNativeTarget "MGBenchmarkTests" */;
+			buildPhases = (
+				21FB4F9416FCBA7B00A9CA26 /* Sources */,
+				21FB4F9516FCBA7B00A9CA26 /* Frameworks */,
+				21FB4F9616FCBA7B00A9CA26 /* Resources */,
+				21FB4F9716FCBA7B00A9CA26 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21FB4FA016FCBA7B00A9CA26 /* PBXTargetDependency */,
+			);
+			name = MGBenchmarkTests;
+			productName = MGBenchmarkTests;
+			productReference = 21FB4F9916FCBA7B00A9CA26 /* MGBenchmarkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		21FB4F8016FCBA7A00A9CA26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Mattes Groeger";
+			};
+			buildConfigurationList = 21FB4F8316FCBA7A00A9CA26 /* Build configuration list for PBXProject "MGBenchmark" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 21FB4F7F16FCBA7A00A9CA26;
+			productRefGroup = 21FB4F8916FCBA7A00A9CA26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				21FB4F8716FCBA7A00A9CA26 /* MGBenchmark */,
+				21FB4F9816FCBA7B00A9CA26 /* MGBenchmarkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		21FB4F9616FCBA7B00A9CA26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FB4FA716FCBA7B00A9CA26 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21FB4F9716FCBA7B00A9CA26 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		21FB4F8416FCBA7A00A9CA26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FB4F9316FCBA7A00A9CA26 /* MGBenchmark.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21FB4F9416FCBA7B00A9CA26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		21FB4FA016FCBA7B00A9CA26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21FB4F8716FCBA7A00A9CA26 /* MGBenchmark */;
+			targetProxy = 21FB4F9F16FCBA7B00A9CA26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				21FB4FA616FCBA7B00A9CA26 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		21FB4FAB16FCBA7B00A9CA26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		21FB4FAC16FCBA7B00A9CA26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		21FB4FAE16FCBA7B00A9CA26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MGBenchmark.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		21FB4FAF16FCBA7B00A9CA26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MGBenchmark.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		21FB4FB116FCBA7B00A9CA26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
+				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		21FB4FB216FCBA7B00A9CA26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
+				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		21FB4F8316FCBA7A00A9CA26 /* Build configuration list for PBXProject "MGBenchmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21FB4FAB16FCBA7B00A9CA26 /* Debug */,
+				21FB4FAC16FCBA7B00A9CA26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21FB4FAD16FCBA7B00A9CA26 /* Build configuration list for PBXNativeTarget "MGBenchmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21FB4FAE16FCBA7B00A9CA26 /* Debug */,
+				21FB4FAF16FCBA7B00A9CA26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		21FB4FB016FCBA7B00A9CA26 /* Build configuration list for PBXNativeTarget "MGBenchmarkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21FB4FB116FCBA7B00A9CA26 /* Debug */,
+				21FB4FB216FCBA7B00A9CA26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 21FB4F8016FCBA7A00A9CA26 /* Project object */;
+}

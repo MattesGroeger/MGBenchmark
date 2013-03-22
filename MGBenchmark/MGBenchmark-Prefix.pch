@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MGBenchmark' target in the 'MGBenchmark' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
