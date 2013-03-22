@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		21FB4F8C16FCBA7A00A9CA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */; };
-		21FB4F9116FCBA7A00A9CA26 /* MGBenchmark.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */; };
-		21FB4F9316FCBA7A00A9CA26 /* MGBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */; };
+		21FB4F9116FCBA7A00A9CA26 /* MGBenchmarkSession.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21FB4F9016FCBA7A00A9CA26 /* MGBenchmarkSession.h */; };
+		21FB4F9316FCBA7A00A9CA26 /* MGBenchmarkSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4F9216FCBA7A00A9CA26 /* MGBenchmarkSession.m */; };
 		21FB4F9B16FCBA7B00A9CA26 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */; };
 		21FB4F9D16FCBA7B00A9CA26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */; };
 		21FB4F9E16FCBA7B00A9CA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */; };
 		21FB4FA116FCBA7B00A9CA26 /* libMGBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */; };
 		21FB4FA716FCBA7B00A9CA26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */; };
-		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */; };
+		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */; };
+		32D27CCD5AE2453D8B406CAD /* libPods-MGBenchmarkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */; settings = {}; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,25 +36,26 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				21FB4F9116FCBA7A00A9CA26 /* MGBenchmark.h in CopyFiles */,
+				21FB4F9116FCBA7A00A9CA26 /* MGBenchmarkSession.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		014274DDF0F94EDAB9150CED /* Pods-MGBenchmarkTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGBenchmarkTests.xcconfig"; path = "Pods/Pods-MGBenchmarkTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGBenchmark.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		21FB4F8F16FCBA7A00A9CA26 /* MGBenchmark-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGBenchmark-Prefix.pch"; sourceTree = "<group>"; };
-		21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBenchmark.h; sourceTree = "<group>"; };
-		21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmark.m; sourceTree = "<group>"; };
+		21FB4F9016FCBA7A00A9CA26 /* MGBenchmarkSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkSession.h; sourceTree = "<group>"; };
+		21FB4F9216FCBA7A00A9CA26 /* MGBenchmarkSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSession.m; sourceTree = "<group>"; };
 		21FB4F9916FCBA7B00A9CA26 /* MGBenchmarkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGBenchmarkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		21FB4FA416FCBA7B00A9CA26 /* MGBenchmarkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGBenchmarkTests-Info.plist"; sourceTree = "<group>"; };
 		21FB4FA616FCBA7B00A9CA26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		21FB4FA816FCBA7B00A9CA26 /* MGBenchmarkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkTests.h; sourceTree = "<group>"; };
-		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkTests.m; sourceTree = "<group>"; };
+		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSessionTests.m; sourceTree = "<group>"; };
+		CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MGBenchmarkTests.a"; path = "libPods-MGBenchmarkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				21FB4F9D16FCBA7B00A9CA26 /* UIKit.framework in Frameworks */,
 				21FB4F9E16FCBA7B00A9CA26 /* Foundation.framework in Frameworks */,
 				21FB4FA116FCBA7B00A9CA26 /* libMGBenchmark.a in Frameworks */,
+				32D27CCD5AE2453D8B406CAD /* libPods-MGBenchmarkTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 				21FB4FA216FCBA7B00A9CA26 /* MGBenchmarkTests */,
 				21FB4F8A16FCBA7A00A9CA26 /* Frameworks */,
 				21FB4F8916FCBA7A00A9CA26 /* Products */,
+				014274DDF0F94EDAB9150CED /* Pods-MGBenchmarkTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +108,7 @@
 				21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */,
 				21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */,
 				21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */,
+				CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,8 +116,8 @@
 		21FB4F8D16FCBA7A00A9CA26 /* MGBenchmark */ = {
 			isa = PBXGroup;
 			children = (
-				21FB4F9016FCBA7A00A9CA26 /* MGBenchmark.h */,
-				21FB4F9216FCBA7A00A9CA26 /* MGBenchmark.m */,
+				21FB4F9016FCBA7A00A9CA26 /* MGBenchmarkSession.h */,
+				21FB4F9216FCBA7A00A9CA26 /* MGBenchmarkSession.m */,
 				21FB4F8E16FCBA7A00A9CA26 /* Supporting Files */,
 			);
 			path = MGBenchmark;
@@ -129,8 +134,7 @@
 		21FB4FA216FCBA7B00A9CA26 /* MGBenchmarkTests */ = {
 			isa = PBXGroup;
 			children = (
-				21FB4FA816FCBA7B00A9CA26 /* MGBenchmarkTests.h */,
-				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkTests.m */,
+				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */,
 				21FB4FA316FCBA7B00A9CA26 /* Supporting Files */,
 			);
 			path = MGBenchmarkTests;
@@ -173,6 +177,7 @@
 				21FB4F9516FCBA7B00A9CA26 /* Frameworks */,
 				21FB4F9616FCBA7B00A9CA26 /* Resources */,
 				21FB4F9716FCBA7B00A9CA26 /* ShellScript */,
+				66AE8031054343C597C88053 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,6 +208,8 @@
 			mainGroup = 21FB4F7F16FCBA7A00A9CA26;
 			productRefGroup = 21FB4F8916FCBA7A00A9CA26 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				21FB4F8716FCBA7A00A9CA26 /* MGBenchmark */,
@@ -236,6 +243,21 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		66AE8031054343C597C88053 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MGBenchmarkTests-resources.sh\"\n";
+			showEnvVarsInLog = 1;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21FB4F9316FCBA7A00A9CA26 /* MGBenchmark.m in Sources */,
+				21FB4F9316FCBA7A00A9CA26 /* MGBenchmarkSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkTests.m in Sources */,
+				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +378,7 @@
 		};
 		21FB4FB116FCBA7B00A9CA26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 014274DDF0F94EDAB9150CED /* Pods-MGBenchmarkTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -371,6 +394,7 @@
 		};
 		21FB4FB216FCBA7B00A9CA26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 014274DDF0F94EDAB9150CED /* Pods-MGBenchmarkTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
