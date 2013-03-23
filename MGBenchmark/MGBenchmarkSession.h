@@ -30,11 +30,12 @@
 	NSDate *_lastInterim;
 }
 
+@property (nonatomic) NSString *name;
 @property (nonatomic) <MGBenchmarkTarget> target;
 @property (nonatomic, readonly) NSUInteger stepCount;
 @property (nonatomic, readonly) NSTimeInterval averageTime;
 
-- (id)initWithTarget:(id <MGBenchmarkTarget>)target;
+- (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target;
 
 - (NSTimeInterval)step:(NSString *)null;
 

@@ -34,7 +34,7 @@ describe(@"MGBenchmarkSession", ^
 	beforeEach(^
 	{
 		output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
-		benchmark = [[MGBenchmarkSession alloc] initWithTarget:output];
+		benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
 	});
 
 	context(@"with fresh setup", ^
