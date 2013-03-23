@@ -31,6 +31,9 @@
 	id <MGBenchmarkOutput> _output;
 }
 
+@property (readonly) NSUInteger stepCount;
+@property (readonly) NSTimeInterval averageTime;
+
 - (id)initWithOutput:(id <MGBenchmarkOutput>)output;
 
 - (NSTimeInterval)step:(NSString *)null;

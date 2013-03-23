@@ -46,6 +46,8 @@ describe(@"MGBenchmarkSession", ^
 			sleep(1);
 
 			[[theValue([benchmark total]) should] beGreaterThanOrEqualTo:theValue(1)];
+			[[theValue(benchmark.stepCount) should] equal:theValue(0)];
+			[[theValue(benchmark.averageTime) should] equal:theValue(0)];
 		});
 
 		it(@"should measure steps and total execution time", ^
@@ -57,11 +59,15 @@ describe(@"MGBenchmarkSession", ^
 
 			[[theValue([benchmark step:@"foo"]) should] beGreaterThanOrEqualTo:theValue(1)];
 			[[theValue([benchmark total]) should] beGreaterThanOrEqualTo:theValue(1)];
+			[[theValue(benchmark.stepCount) should] equal:theValue(1)];
+			[[theValue(benchmark.averageTime) should] beBetween:theValue(1) and:theValue(1.1)];
 
 			sleep(1);
 
 			[[theValue([benchmark step:nil]) should] beGreaterThanOrEqualTo:theValue(1)];
 			[[theValue([benchmark total]) should] beGreaterThanOrEqualTo:theValue(2)];
+			[[theValue(benchmark.stepCount) should] equal:theValue(2)];
+			[[theValue(benchmark.averageTime) should] beBetween:theValue(1) and:theValue(1.2)];
 		});
 	});
 });

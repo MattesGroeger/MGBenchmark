@@ -38,10 +38,19 @@
 	return self;
 }
 
+- (NSTimeInterval)averageTime
+{
+	if (_stepCount == 0)
+		return 0;
+
+	return [_lastInterim timeIntervalSinceDate:_startTime] / _stepCount;
+}
+
 - (NSTimeInterval)step:(NSString *)step
 {
 	NSTimeInterval timePassed = [self timePassedSince:_lastInterim];
 	_lastInterim = [NSDate date];
+	_stepCount++;
 
 	[_output printPassedTime:timePassed forStep:step];
 
