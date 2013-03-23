@@ -24,7 +24,7 @@
 #import "MGBenchmarkSession.h"
 #import "Kiwi.h"
 
-SPEC_BEGIN(MGBenchmarkSpec)
+SPEC_BEGIN(MGBenchmarkSessionSpec)
 
 describe(@"MGBenchmarkSession", ^
 {

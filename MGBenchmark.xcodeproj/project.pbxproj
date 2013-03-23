@@ -15,8 +15,11 @@
 		21FB4F9E16FCBA7B00A9CA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */; };
 		21FB4FA116FCBA7B00A9CA26 /* libMGBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */; };
 		21FB4FA716FCBA7B00A9CA26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */; };
-		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */; };
+		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m */; };
 		32D27CCD5AE2453D8B406CAD /* libPods-MGBenchmarkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */; settings = {}; };
+		BF8D91BB4AD9BB858C8AEA2C /* MGBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D985791FC705006A9A5C4 /* MGBenchmark.m */; };
+		BF8D9863908FAD7280FFBE74 /* MGBenchmark.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D92987D97801EC52DA95A /* MGBenchmark.h */; };
+		BF8D9FDEE6A39040D1C54319 /* MGBenchmarkSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */; };
 		DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */; };
 		DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */; };
 		DB9E9E7D4E600DA2C3C72485 /* MGConsoleOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9E9F26C847141446E0E294 /* MGConsoleOutput.m */; };
@@ -42,6 +45,7 @@
 				21FB4F9116FCBA7A00A9CA26 /* MGBenchmarkSession.h in CopyFiles */,
 				DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */,
 				DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */,
+				BF8D9863908FAD7280FFBE74 /* MGBenchmark.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +63,10 @@
 		21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		21FB4FA416FCBA7B00A9CA26 /* MGBenchmarkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGBenchmarkTests-Info.plist"; sourceTree = "<group>"; };
 		21FB4FA616FCBA7B00A9CA26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSessionTests.m; sourceTree = "<group>"; };
+		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSessionSpec.m; sourceTree = "<group>"; };
+		BF8D92987D97801EC52DA95A /* MGBenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmark.h; sourceTree = "<group>"; };
+		BF8D985791FC705006A9A5C4 /* MGBenchmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBenchmark.m; sourceTree = "<group>"; };
+		BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSpec.m; sourceTree = "<group>"; };
 		CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MGBenchmarkTests.a"; path = "libPods-MGBenchmarkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConsoleOutput.h; sourceTree = "<group>"; };
 		DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkTarget.h; sourceTree = "<group>"; };
@@ -128,6 +135,8 @@
 				21FB4F9216FCBA7A00A9CA26 /* MGBenchmarkSession.m */,
 				21FB4F8E16FCBA7A00A9CA26 /* Supporting Files */,
 				DB9E98AE56E618E2F16F8A32 /* Output */,
+				BF8D985791FC705006A9A5C4 /* MGBenchmark.m */,
+				BF8D92987D97801EC52DA95A /* MGBenchmark.h */,
 			);
 			path = MGBenchmark;
 			sourceTree = "<group>";
@@ -143,8 +152,9 @@
 		21FB4FA216FCBA7B00A9CA26 /* MGBenchmarkTests */ = {
 			isa = PBXGroup;
 			children = (
-				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */,
+				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m */,
 				21FB4FA316FCBA7B00A9CA26 /* Supporting Files */,
+				BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */,
 			);
 			path = MGBenchmarkTests;
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 			files = (
 				21FB4F9316FCBA7A00A9CA26 /* MGBenchmarkSession.m in Sources */,
 				DB9E9E7D4E600DA2C3C72485 /* MGConsoleOutput.m in Sources */,
+				BF8D91BB4AD9BB858C8AEA2C /* MGBenchmark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +304,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m in Sources */,
+				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m in Sources */,
+				BF8D9FDEE6A39040D1C54319 /* MGBenchmarkSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
