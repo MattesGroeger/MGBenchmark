@@ -33,7 +33,7 @@
 
 - (id)initWithOutput:(id <MGBenchmarkOutput>)output;
 
-- (NSTimeInterval)interim:(NSString *)null;
+- (NSTimeInterval)step:(NSString *)null;
 
 - (NSTimeInterval)total;
 

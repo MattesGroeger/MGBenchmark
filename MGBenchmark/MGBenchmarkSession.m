@@ -38,7 +38,7 @@
 	return self;
 }
 
-- (NSTimeInterval)interim:(NSString *)step
+- (NSTimeInterval)step:(NSString *)step
 {
 	NSTimeInterval timePassed = [self timePassedSince:_lastInterim];
 	_lastInterim = [NSDate date];
