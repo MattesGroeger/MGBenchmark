@@ -32,13 +32,13 @@
 
 - (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
 {
-	NSLog(@"<< BENCHMARK [%@/%@] %.2fs (step %d) >>",
+	NSLog(@"<< BENCHMARK [%@/%@] %.5fs (step %d) >>",
 			_session.name, step, passedTime, _session.stepCount);
 }
 
 - (void)printTotalTime:(NSTimeInterval)passedTime
 {
-	NSLog(@"<< BENCHMARK [%@/total] %.2fs ((%d steps, average %.2fs)) >>",
+	NSLog(@"<< BENCHMARK [%@/total] %.5fs ((%d steps, average %.5fs)) >>",
 			_session.name, passedTime, _session.stepCount, _session.averageTime);
 }
 

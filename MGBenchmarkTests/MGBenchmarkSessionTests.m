@@ -49,7 +49,7 @@ describe(@"MGBenchmarkSession", ^
 		{
 			output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
 			[[output should] receive:@selector(sessionStarted:)];
-			
+
 			benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
 		});
 
