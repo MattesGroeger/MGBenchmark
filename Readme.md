@@ -6,8 +6,8 @@ Features:
 * Measure execution time of code
 * Measure individual steps of executions
 * Implement custom output targets
-* Get the average execution time of all steps (tbd)
-* Have multiple benchmark sessions at the same time (tbd)
+* Get the average execution time of all steps
+* Have multiple benchmark sessions at the same time
 * Support pause/resume (tbd)
 * Will run by default only in DEBUG mode (tbd)
 
