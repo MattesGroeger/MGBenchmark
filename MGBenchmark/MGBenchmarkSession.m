@@ -25,14 +25,14 @@
 
 @implementation MGBenchmarkSession
 
-- (id)initWithOutput:(id <MGBenchmarkOutput>)output
+- (id)initWithTarget:(id <MGBenchmarkOutput>)target
 {
 	self = [super init];
 
 	if (self)
 	{
 		_lastInterim = _startTime = [NSDate date];
-		_output = output;
+		_target = target;
 	}
 
 	return self;
@@ -52,7 +52,7 @@
 	_lastInterim = [NSDate date];
 	_stepCount++;
 
-	[_output printPassedTime:timePassed forStep:step];
+	[_target printPassedTime:timePassed forStep:step];
 
 	return timePassed;
 }
@@ -61,7 +61,7 @@
 {
 	NSTimeInterval timePassed = [self timePassedSince:_startTime];
 
-	[_output printTotalTime:timePassed];
+	[_target printTotalTime:timePassed];
 	
 	return timePassed;
 }

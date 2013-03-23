@@ -28,13 +28,13 @@
 {
 	NSDate *_startTime;
 	NSDate *_lastInterim;
-	id <MGBenchmarkOutput> _output;
 }
 
-@property (readonly) NSUInteger stepCount;
-@property (readonly) NSTimeInterval averageTime;
+@property (nonatomic) <MGBenchmarkOutput> target;
+@property (nonatomic, readonly) NSUInteger stepCount;
+@property (nonatomic, readonly) NSTimeInterval averageTime;
 
-- (id)initWithOutput:(id <MGBenchmarkOutput>)output;
+- (id)initWithTarget:(id <MGBenchmarkOutput>)target;
 
 - (NSTimeInterval)step:(NSString *)null;
 

@@ -81,7 +81,7 @@ Static access across different classes:
 
 ```obj-c
 // set the default output for all sessions
-[MGBenchmark defaultOutput:[[MGConsoleOutput alloc] init]]];
+[MGBenchmark defaultTarget:[[MGConsoleOutput alloc] init]]];
 
 // Class A
 [MGBenchmark start:@"bar"];
