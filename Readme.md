@@ -8,6 +8,7 @@ Features:
 * Implement custom output targets
 * Get the average execution time of all steps (tbd)
 * Have multiple benchmark sessions at the same time (tbd)
+* Support pause/resume (tbd)
 * Will run by default only in DEBUG mode (tbd)
 
 ## Installation via CocoaPods (tbd)
@@ -47,8 +48,14 @@ sleep(2);
 // you can always get started sessions via static access
 [benchmark step:@"sleep2"]; // << BENCHMARK [foo/sleep2] 2.01s (step 2) >>
 
-// measure the total/average session execution time
-[benchmark total]; // << BENCHMARK [foo/total] 2.03s (2 steps, average 2.02s) >>
+// summarize the total/average session execution time
+[benchmark total]; // << BENCHMARK [foo/total] 3.03s (2 steps, average 2.02s) >>
+
+sleep(1);
+
+// you can go on...
+[benchmark step:@"sleep3"]; // << BENCHMARK [foo/sleep3] 1.01s (step 3) >>
+[benchmark total]; // << BENCHMARK [foo/total] 4.04s (3 steps, average 2.69s) >>
 
 // cleanup session
 [MGBenchmark finish:@"foo"];
