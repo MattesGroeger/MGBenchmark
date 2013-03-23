@@ -27,7 +27,29 @@ Features:
 
 ## Usage (Proposal)
 
-Basic configuration and usage example:
+Simple usage example:
+
+```obj-c
+// start a new benchmark session
+MGBenchmarkSession *benchmark = [[MGBenchmarkSession alloc] init];
+
+// code to measure
+sleep(1);
+
+// log step
+NSLog(@"%.2fs", [benchmark step:@"sleep1"]); // 1.01s
+
+// execute more code
+sleep(2);
+
+// log second step
+NSLog(@"%.2fs", [benchmark step:@"sleep2"]); // 2.01s
+
+// log the total/average session execution time
+NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount, benchmark.averageTime); // 3.03s (steps: 2 | average: 2.02s)
+```
+
+Using the console output formatter:
 
 ```obj-c
 // start a new benchmark session
@@ -42,7 +64,7 @@ sleep(1);
 // execute more code
 sleep(2);
 
-// you can always get started sessions via static access
+// measure second step
 [benchmark step:@"sleep2"]; // << BENCHMARK [foo/sleep2] 2.01s (step 2) >>
 
 // summarize the total/average session execution time
