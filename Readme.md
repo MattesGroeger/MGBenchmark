@@ -30,11 +30,8 @@ Features:
 Basic configuration and usage example:
 
 ```obj-c
-// set the default output for all sessions
-[MGBenchmark defaultOutput:[[MGConsoleOutput alloc] init]]];
-
 // start a new benchmark session
-MGBenchmarkSession *benchmark = [MGBenchmark start:@"foo"];
+MGBenchmarkSession *benchmark = [[MGBenchmarkSession alloc] initWithName:@"foo" andTarget:[[MGConsoleOutput alloc] init]];
 
 // code to measure
 sleep(1);
@@ -56,14 +53,14 @@ sleep(1);
 // you can go on...
 [benchmark step:@"sleep3"]; // << BENCHMARK [foo/sleep3] 1.01s (step 3) >>
 [benchmark total]; // << BENCHMARK [foo/total] 4.04s (3 steps, average 2.69s) >>
-
-// cleanup session
-[MGBenchmark finish:@"foo"];
 ```
 
 Static access across different classes:
 
 ```obj-c
+// set the default output for all sessions
+[MGBenchmark defaultOutput:[[MGConsoleOutput alloc] init]]];
+
 // Class A
 [MGBenchmark start:@"bar"];
 
@@ -72,8 +69,8 @@ Static access across different classes:
 
 // Class C
 [[MGBenchmark session:@"bar"] step:@"2"];
+[[MGBenchmark session:@"bar"] total];
 
-// Class D
-[[MGBenchmark retrieve:@"bar"] total];
+// cleanup session
 [MGBenchmark finish:@"bar"];
 ```
