@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-#import <MGBenchmark/MGBenchmarkOutput.h>
+#import "MGBenchmarkTarget.h"
 #import "MGBenchmarkSession.h"
 #import "Kiwi.h"
 
@@ -33,7 +33,7 @@ describe(@"MGBenchmarkSession", ^
 
 	beforeEach(^
 	{
-		output = [KWMock mockForProtocol:@protocol(MGBenchmarkOutput)];
+		output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
 		benchmark = [[MGBenchmarkSession alloc] initWithTarget:output];
 	});
 

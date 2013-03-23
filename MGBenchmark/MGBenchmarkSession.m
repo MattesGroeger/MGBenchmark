@@ -21,11 +21,11 @@
  */
 
 #import "MGBenchmarkSession.h"
-#import "MGBenchmarkOutput.h"
+#import "MGBenchmarkTarget.h"
 
 @implementation MGBenchmarkSession
 
-- (id)initWithTarget:(id <MGBenchmarkOutput>)target
+- (id)initWithTarget:(id <MGBenchmarkTarget>)target
 {
 	self = [super init];
 

@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MGBenchmarkOutput;
+@protocol MGBenchmarkTarget;
 
 @interface MGBenchmarkSession : NSObject
 {
@@ -30,11 +30,11 @@
 	NSDate *_lastInterim;
 }
 
-@property (nonatomic) <MGBenchmarkOutput> target;
+@property (nonatomic) <MGBenchmarkTarget> target;
 @property (nonatomic, readonly) NSUInteger stepCount;
 @property (nonatomic, readonly) NSTimeInterval averageTime;
 
-- (id)initWithTarget:(id <MGBenchmarkOutput>)target;
+- (id)initWithTarget:(id <MGBenchmarkTarget>)target;
 
 - (NSTimeInterval)step:(NSString *)null;
 

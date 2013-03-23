@@ -21,8 +21,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "MGBenchmarkOutput.h"
+#import "MGBenchmarkTarget.h"
 
-@interface MGConsoleOutput : NSObject <MGBenchmarkOutput>
+@interface MGConsoleOutput : NSObject <MGBenchmarkTarget>
 
 @end

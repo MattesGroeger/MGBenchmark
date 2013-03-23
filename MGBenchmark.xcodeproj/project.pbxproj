@@ -17,7 +17,7 @@
 		21FB4FA716FCBA7B00A9CA26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FB4FA516FCBA7B00A9CA26 /* InfoPlist.strings */; };
 		21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */; };
 		32D27CCD5AE2453D8B406CAD /* libPods-MGBenchmarkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */; settings = {}; };
-		DB9E990BDD68D104BAD8196E /* MGBenchmarkOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E980DC688B693831E03E3 /* MGBenchmarkOutput.h */; };
+		DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */; };
 		DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */; };
 		DB9E9E7D4E600DA2C3C72485 /* MGConsoleOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9E9F26C847141446E0E294 /* MGConsoleOutput.m */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				21FB4F9116FCBA7A00A9CA26 /* MGBenchmarkSession.h in CopyFiles */,
-				DB9E990BDD68D104BAD8196E /* MGBenchmarkOutput.h in CopyFiles */,
+				DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */,
 				DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +62,7 @@
 		21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSessionTests.m; sourceTree = "<group>"; };
 		CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MGBenchmarkTests.a"; path = "libPods-MGBenchmarkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConsoleOutput.h; sourceTree = "<group>"; };
-		DB9E980DC688B693831E03E3 /* MGBenchmarkOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkOutput.h; sourceTree = "<group>"; };
+		DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmarkTarget.h; sourceTree = "<group>"; };
 		DB9E9F26C847141446E0E294 /* MGConsoleOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConsoleOutput.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,7 @@
 		DB9E98AE56E618E2F16F8A32 /* Output */ = {
 			isa = PBXGroup;
 			children = (
-				DB9E980DC688B693831E03E3 /* MGBenchmarkOutput.h */,
+				DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */,
 				DB9E9F26C847141446E0E294 /* MGConsoleOutput.m */,
 				DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */,
 			);
