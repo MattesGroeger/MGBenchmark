@@ -39,6 +39,9 @@
 		_lastInterim = _startTime = [NSDate date];
 		_name = name;
 		_target = target;
+
+		if (_target)
+			[_target sessionStarted:self];
 	}
 
 	return self;

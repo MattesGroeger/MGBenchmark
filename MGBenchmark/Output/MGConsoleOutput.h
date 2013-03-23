@@ -23,6 +23,11 @@
 #import <Foundation/Foundation.h>
 #import "MGBenchmarkTarget.h"
 
+@class MGBenchmarkSession;
+
 @interface MGConsoleOutput : NSObject <MGBenchmarkTarget>
+{
+	MGBenchmarkSession *_session;
+}
 
 @end

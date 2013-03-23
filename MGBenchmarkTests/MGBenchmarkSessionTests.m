@@ -31,14 +31,28 @@ describe(@"MGBenchmarkSession", ^
 	__block id output;
 	__block MGBenchmarkSession *benchmark;
 
-	beforeEach(^
+	it(@"should create instance", ^
 	{
 		output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
+
+		[[output should] receive:@selector(sessionStarted:)];
+
 		benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
+
+		[[theValue(benchmark.stepCount) should] equal:theValue(0)];
+		[[theValue(benchmark.averageTime) should] equal:theValue(0)];
 	});
 
 	context(@"with fresh setup", ^
 	{
+		beforeEach(^
+		{
+			output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
+			[[output should] receive:@selector(sessionStarted:)];
+			
+			benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
+		});
+
 		it(@"should measure total execution time", ^
 		{
 			[[output shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(printTotalTime:)];

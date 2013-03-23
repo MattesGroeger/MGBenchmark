@@ -21,17 +21,25 @@
  */
 
 #import "MGConsoleOutput.h"
+#import "MGBenchmarkSession.h"
 
 @implementation MGConsoleOutput
 
+- (void)sessionStarted:(MGBenchmarkSession *)session
+{
+	_session = session;
+}
+
 - (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
 {
-	NSLog(@"[%.2fs] for step '%@'", passedTime, step);
+	NSLog(@"<< BENCHMARK [%@/%@] %.2fs (step %d) >>",
+			_session.name, step, passedTime, _session.stepCount);
 }
 
 - (void)printTotalTime:(NSTimeInterval)passedTime
 {
-	NSLog(@"[%.2fs] in total", passedTime);
+	NSLog(@"<< BENCHMARK [%@/total] %.2fs ((%d steps, average %.2fs)) >>",
+			_session.name, passedTime, _session.stepCount, _session.averageTime);
 }
 
 @end

@@ -22,7 +22,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class MGBenchmarkSession;
+
 @protocol MGBenchmarkTarget <NSObject>
+
+- (void)sessionStarted:(MGBenchmarkSession *)session;
 
 - (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step;
 
