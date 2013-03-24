@@ -47,7 +47,12 @@ Using the class methods of `MGBenchmark` allows to benchmark times accross class
 
 ## Customizing the logs
 
-### Custom console output
+There is 3 different ways to customize the benchmark results:
+* Directly use the results
+* Customize the console output
+* Implement your own output target
+
+### Using results directly
 
 You can easily create your own console logs. For that you have to disable the default console output:
 
@@ -73,6 +78,41 @@ You can also access the amount of steps as well as the average execution times:
 
 ```obj-c
 NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount, benchmark.averageTime); // 3.03s (steps: 2 | average: 2.02s)
+```
+
+### Customize the MGConsoleOutput
+
+The provided console target is very customizable. You can configure the output by providing a strings containing placeholders. These placeholders differ for the `step:` and `total` benchmark:
+
+**Step**
+	${sessionName}
+	${stepName}
+	${passedTime}
+	${stepCount}
+
+**Total**
+	${sessionName}
+	${passedTime}
+	${stepCount}
+	${averageTime}
+
+You can also change the measured time format. By changing the multiplier you can get measured times in milliseconds for example:
+
+```obj-c
+MGConsoleOutput *output = [[MGConsoleOutput alloc] init];
+output.timeMultiplier = 1000; // to get ms rather than seconds
+output.timeFormat = @"%.3fms"; // with 3 digits after comma
+output.stepFormat = @"${stepName}: ${passedTime}";
+output.totalFormat = @"total: ${passedTime}";
+
+[MGBenchmark setDefaultTarget:output];
+
+id session = [MGBenchmark start:@"demo"];
+[session step:@"step1"]; // step1: 0.004ms
+[session step:@"step2"]; // step2: 0.320ms
+[session step:@"step3"]; // step3: 0.298ms
+[session total]; // total: 0.884ms
+[MGBenchmark finish:@"demo"];
 ```
 
 ### Custom output target
