@@ -32,8 +32,9 @@
 	if (self)
 	{
 		_stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
-		_totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} ((${stepCount} steps, average ${averageTime})) >>";
+		_totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} (${stepCount} steps, average ${averageTime}) >>";
 		_timeFormat = @"%.5fs";
+		_timeMultiplier = 1;
 	}
 
 	return self;
@@ -66,7 +67,7 @@
 
 - (NSString *)formatTime:(NSTimeInterval)time
 {
-	return [NSString stringWithFormat:_timeFormat, time];
+	return [NSString stringWithFormat:_timeFormat, time * _timeMultiplier];
 }
 
 - (void)logWithFormat:(NSString *)format andReplacement:(NSDictionary *)replacement

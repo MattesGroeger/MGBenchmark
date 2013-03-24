@@ -21,6 +21,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "MGBenchmarkTarget.h"
 
 @class MGBenchmarkSession;
@@ -56,13 +57,19 @@
 * Example:
 * consoleOutput.totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} ((${stepCount} steps, average ${averageTime})) >>";
 */
-@property (strong) NSString *totalFormat;
+@property (nonatomic, strong) NSString *totalFormat;
 
 /**
 * You can define a custom time format using the `stringWithFormat` notation
 * for float values. By default it will use @"%.5fs", resulting in "1.34245s"
 * for example.
 */
-@property (strong) NSString *timeFormat;
+@property (nonatomic, strong) NSString *timeFormat;
+
+/**
+* In case you want to output the time in MS or Minutes rather then seconds,
+* use the multiplier (e.g. 1000 for MS).
+*/
+@property (nonatomic) CGFloat timeMultiplier;
 
 @end
