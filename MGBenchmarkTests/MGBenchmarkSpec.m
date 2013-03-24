@@ -47,24 +47,19 @@ describe(@"MGBenchmark", ^
 		[[MGBenchmark session:@"foo"] shouldBeNil];
 	});
 
-	it(@"should fail to start same session twice", ^
+	it(@"should override existing session when started twice", ^
 	{
 		[MGBenchmark start:@"foo"];
-
-		[[theBlock(^
-		{
-			[MGBenchmark start:@"foo"];
-		}) should] raiseWithReason:@"Can't start session. A session with name 'foo' was already started!"];
+		[MGBenchmark start:@"foo"];
 
 		[MGBenchmark finish:@"foo"];
+
+		[[MGBenchmark session:@"foo"] shouldBeNil];
 	});
 
-	it(@"should fail to finish never started session", ^
+	it(@"should silently ignore when finishing a never started session", ^
 	{
-		[[theBlock(^
-		{
-			[MGBenchmark finish:@"foo"];
-		}) should] raiseWithReason:@"Can't finish session with name 'foo'. The session was never started!"];
+		[MGBenchmark finish:@"foo"];
 	});
 
 	it(@"should assign default target", ^

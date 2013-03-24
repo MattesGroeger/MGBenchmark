@@ -44,8 +44,6 @@ id <MGBenchmarkTarget> _defaultTarget;
 
 + (MGBenchmarkSession *)start:(NSString *)sessionName
 {
-	NSAssert(!_sessions[sessionName], @"Can't start session. A session with name '%@' was already started!", sessionName);
-
 	MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:_defaultTarget];
 
 	_sessions[sessionName] = session;
@@ -60,8 +58,6 @@ id <MGBenchmarkTarget> _defaultTarget;
 
 + (void)finish:(NSString *)sessionName
 {
-	NSAssert(_sessions[sessionName], @"Can't finish session with name '%@'. The session was never started!", sessionName);
-
 	[_sessions removeObjectForKey:sessionName];
 }
 
