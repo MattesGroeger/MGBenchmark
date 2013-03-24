@@ -25,21 +25,67 @@
 
 @implementation MGConsoleOutput
 
+- (id)init
+{
+	self = [super init];
+
+	if (self)
+	{
+		_stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
+		_totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} ((${stepCount} steps, average ${averageTime})) >>";
+		_timeFormat = @"%.5fs";
+	}
+
+	return self;
+}
+
 - (void)sessionStarted:(MGBenchmarkSession *)session
 {
 	_session = session;
 }
 
-- (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
+- (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
 {
-	NSLog(@"<< BENCHMARK [%@/%@] %.5fs (step %d) >>",
-			_session.name, step, passedTime, _session.stepCount);
+	[self logWithFormat:_stepFormat andReplacement:@{
+			@"sessionName": _session.name,
+			@"stepName": stepName,
+			@"passedTime": [self formatTime:passedTime],
+			@"stepCount": @(_session.stepCount)
+	}];
 }
 
 - (void)printTotalTime:(NSTimeInterval)passedTime
 {
-	NSLog(@"<< BENCHMARK [%@/total] %.5fs ((%d steps, average %.5fs)) >>",
-			_session.name, passedTime, _session.stepCount, _session.averageTime);
+	[self logWithFormat:_totalFormat andReplacement:@{
+			@"sessionName": _session.name,
+			@"passedTime": [self formatTime:passedTime],
+			@"stepCount": @(_session.stepCount),
+			@"averageTime": [self formatTime:_session.averageTime]
+	}];
+}
+
+- (NSString *)formatTime:(NSTimeInterval)time
+{
+	return [NSString stringWithFormat:_timeFormat, time];
+}
+
+- (void)logWithFormat:(NSString *)format andReplacement:(NSDictionary *)replacement
+{
+	NSLog(@"%@", [self string:format withKeyValueReplacement:replacement]);
+}
+
+- (NSString *)string:(NSString *)string withKeyValueReplacement:(NSDictionary *)replacement
+{
+	for (NSString *key in [replacement allKeys])
+	{
+		id value = [replacement objectForKey:key];
+
+		string = [string
+					stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"${%@}", key]
+					withString:[NSString stringWithFormat:@"%@", value]];
+	}
+
+	return string;
 }
 
 @end

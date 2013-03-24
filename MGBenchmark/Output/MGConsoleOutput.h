@@ -30,4 +30,39 @@
 	MGBenchmarkSession *_session;
 }
 
+/**
+* You can define a custom output string for each step by using the following
+* placeholders:
+*
+* ${sessionName}
+* ${stepName}
+* ${passedTime}
+* ${stepCount}
+*
+* Example:
+* consoleOutput.stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
+*/
+@property (strong) NSString *stepFormat;
+
+/**
+* You can define a custom output string for the total time by using the
+* following placeholders:
+*
+* ${sessionName}
+* ${passedTime}
+* ${stepCount}
+* ${averageTime}
+*
+* Example:
+* consoleOutput.totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} ((${stepCount} steps, average ${averageTime})) >>";
+*/
+@property (strong) NSString *totalFormat;
+
+/**
+* You can define a custom time format using the `stringWithFormat` notation
+* for float values. By default it will use @"%.5fs", resulting in "1.34245s"
+* for example.
+*/
+@property (strong) NSString *timeFormat;
+
 @end
