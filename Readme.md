@@ -47,7 +47,7 @@ Using the class methods of `MGBenchmark` allows to benchmark times accross class
 
 ## Customizing the logs
 
-There is 3 different ways to customize the benchmark results:
+There are 3 different ways to customize the benchmark results:
 * Directly use the results
 * Customize the console output
 * Implement your own output target
@@ -85,16 +85,20 @@ NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount
 The provided console target is very customizable. You can configure the output by providing a strings containing placeholders. These placeholders differ for the `step:` and `total` benchmark:
 
 **Step**
-	${sessionName}
-	${stepName}
-	${passedTime}
-	${stepCount}
+```
+${sessionName}
+${stepName}
+${passedTime}
+${stepCount}
+```
 
 **Total**
-	${sessionName}
-	${passedTime}
-	${stepCount}
-	${averageTime}
+```
+${sessionName}
+${passedTime}
+${stepCount}
+${averageTime}
+```
 
 You can also change the measured time format. By changing the multiplier you can get measured times in milliseconds for example:
 
@@ -133,7 +137,7 @@ If you want to use a different output format, the best way is to define a custom
 
 - (void)sessionStarted:(MGBenchmarkSession *)session
 {
-    _session = session;
+	_session = session;
 }
 
 - (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
