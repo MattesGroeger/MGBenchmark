@@ -45,7 +45,7 @@
 	_session = session;
 }
 
-- (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
 {
 	[self logWithFormat:_stepFormat andReplacement:@{
 			@"sessionName": _session.name,
@@ -55,7 +55,7 @@
 	}];
 }
 
-- (void)printTotalTime:(NSTimeInterval)passedTime
+- (void)totalTime:(NSTimeInterval)passedTime
 {
 	[self logWithFormat:_totalFormat andReplacement:@{
 			@"sessionName": _session.name,

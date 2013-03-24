@@ -55,7 +55,7 @@ describe(@"MGBenchmarkSession", ^
 
 		it(@"should measure total execution time", ^
 		{
-			[[output shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(printTotalTime:)];
+			[[output shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(totalTime:)];
 
 			sleep(1);
 
@@ -66,8 +66,8 @@ describe(@"MGBenchmarkSession", ^
 
 		it(@"should measure steps and total execution time", ^
 		{
-			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(printTotalTime:) withCount:2];
-			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(printPassedTime:forStep:) withCount:2];
+			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(totalTime:) withCount:2];
+			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(passedTime:forStep:) withCount:2];
 
 			sleep(1);
 

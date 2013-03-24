@@ -62,7 +62,7 @@
 	_stepCount++;
 
 	if (_target)
-		[_target printPassedTime:timePassed forStep:step];
+		[_target passedTime:timePassed forStep:step];
 
 	return timePassed;
 }
@@ -72,7 +72,7 @@
 	NSTimeInterval timePassed = [self timePassedSince:_startTime];
 
 	if (_target)
-		[_target printTotalTime:timePassed];
+		[_target totalTime:timePassed];
 	
 	return timePassed;
 }

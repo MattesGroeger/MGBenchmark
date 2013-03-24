@@ -28,8 +28,8 @@
 
 - (void)sessionStarted:(MGBenchmarkSession *)session;
 
-- (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step;
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step;
 
-- (void)printTotalTime:(NSTimeInterval)passedTime;
+- (void)totalTime:(NSTimeInterval)passedTime;
 
 @end

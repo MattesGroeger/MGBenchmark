@@ -136,12 +136,12 @@ If you want to use a different output format, the best way is to define a custom
     _session = session;
 }
 
-- (void)printPassedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
 {
 	NSLog(@"[%@/%@] %.5fs (step %d)", _session.name, step, passedTime, _session.stepCount);
 }
 
-- (void)printTotalTime:(NSTimeInterval)passedTime
+- (void)totalTime:(NSTimeInterval)passedTime
 {
 	NSLog(@"[%@/total] %.5fs ((%d steps, average %.5fs))", _session.name, passedTime, _session.stepCount, _session.averageTime);
 }
