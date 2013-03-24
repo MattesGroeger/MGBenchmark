@@ -121,10 +121,10 @@ id session = [MGBenchmark start:@"demo"];
 
 ### Custom output target
 
-If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol:
+If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol. Here is an example that sends the results to [Flurry](http://www.flurry.com/flurry-analytics.html). Note that you need to initialize Flurry beforehand.
 
 ```obj-c
-@interface CustomOutput : NSObject <MGBenchmarkTarget>
+@interface FlurryTarget : NSObject <MGBenchmarkTarget>
 {
     MGBenchmarkSession *_session;
 }
@@ -133,7 +133,7 @@ If you want to use a different output format, the best way is to define a custom
 ```
 
 ```obj-c
-@implementation CustomOutput
+@implementation FlurryTarget
 
 - (void)sessionStarted:(MGBenchmarkSession *)session
 {
@@ -142,22 +142,24 @@ If you want to use a different output format, the best way is to define a custom
 
 - (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
 {
-	NSLog(@"[%@/%@] %.5fs (step %d)", _session.name, step, passedTime, _session.stepCount);
+	// ignore steps
 }
 
 - (void)totalTime:(NSTimeInterval)passedTime
 {
-	NSLog(@"[%@/total] %.5fs ((%d steps, average %.5fs))", _session.name, passedTime, _session.stepCount, _session.averageTime);
+	[Flurry logEvent:_session.name withParameters:@{
+		@"totalTime": [NSString stringWithFormat:@"%.5fs", passedTime],
+		@"steps": @(_session.stepCount),
+		@"averageStepTime": [NSString stringWithFormat:@"%.5fs", _session.averageTime]
+	}];
 }
 
 @end
 ```
 
-Of course, you are not limited to console output here. You could also send the data to a server.
-
 Use your custom output target:
 
 ```obj-c
 // set the default output for all sessions
-[MGBenchmark setDefaultTarget:[[CustomOutput alloc] init]]];
+[MGBenchmark setDefaultTarget:[[FlurryTarget alloc] init]]];
 ```
