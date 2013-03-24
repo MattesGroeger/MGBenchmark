@@ -173,3 +173,17 @@ Use your custom output target:
 // set the default output for all sessions
 [MGBenchmark setDefaultTarget:[[FlurryTarget alloc] init]]];
 ```
+
+## Changelog
+
+**0.1.1** (2013/03/24)
+
+* [BUGFIX] More fault-tolerant (doesn't use NSAssert anymore)
+
+**0.1.0** (2013/03/24)
+
+* [NEW] Measure total execution times
+* [NEW] Measure individual steps of execution
+* [NEW] Get the average execution time of all steps
+* [NEW] Have multiple benchmark sessions at the same time
+* [NEW] Implement custom output targets
