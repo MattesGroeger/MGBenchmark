@@ -1,6 +1,6 @@
 ## Introduction
 
-This library provides an easy way to measure execution time within code. This is especially interesting for load operations that are difficult to profile with Instruments.
+Easily measure execution times within code. This is especially interesting for load operations that are difficult to profile with [Instruments](http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html).
 
 ### Features
 
@@ -9,10 +9,8 @@ This library provides an easy way to measure execution time within code. This is
 * Get the average execution time of all steps
 * Have multiple benchmark sessions at the same time
 * Implement custom output targets
-* Support pause/resume (tbd)
-* Will run by default only in DEBUG mode (tbd)
 
-## Installation via CocoaPods (tbd)
+## Installation via CocoaPods
 
 - Install CocoaPods. See [http://cocoapods.org](http://cocoapods.org)
 - Add the MGBenchmark reference to the Podfile:
@@ -26,7 +24,7 @@ This library provides an easy way to measure execution time within code. This is
 - Open the newly created Xcode Workspace file
 - Implement your commands
 
-## Quick Usage
+## Quick Guide
 
 Using the class methods of `MGBenchmark` allows to benchmark times accross classes. No need to pass references around. The results will be shown in the console.
 
@@ -45,6 +43,18 @@ Using the class methods of `MGBenchmark` allows to benchmark times accross class
 [MGBenchmark finish:@"demo"]; // garbage collect
 ```
 
+Nevertheless `[MGBenchmark start:@"foo"]` returns an instance as well:
+
+```obj-c
+MGBenchmarkSession *session = [MGBenchmark start:@"demo"];
+
+[session step:@"1"];
+[session step:@"2"];
+[session total];
+
+[MGBenchmark finish:@"demo"]; // garbage collect
+```
+
 ## Customizing the logs
 
 There are 3 different ways to customize the benchmark results:
@@ -54,7 +64,7 @@ There are 3 different ways to customize the benchmark results:
 
 ### Using results directly
 
-You can easily create your own console logs. For that you have to disable the default console output:
+You can easily create your own console logs. For that you should disable the default console output:
 
 ```obj-c
 [MGBenchmark setDefaultTarget:nil];
@@ -82,7 +92,7 @@ NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount
 
 ### Customize the MGConsoleOutput
 
-The provided console target is very customizable. You can configure the output by providing a strings containing placeholders. These placeholders differ for the `step:` and `total` benchmark:
+The provided console target is very customizable. You can configure the output by providing strings containing placeholders. The available placeholders differ for the `step:` and `total` benchmark:
 
 **Step**
 ```
@@ -112,10 +122,10 @@ output.totalFormat = @"total: ${passedTime}";
 [MGBenchmark setDefaultTarget:output];
 
 id session = [MGBenchmark start:@"demo"];
-[session step:@"step1"]; // step1: 0.004ms
-[session step:@"step2"]; // step2: 0.320ms
-[session step:@"step3"]; // step3: 0.298ms
-[session total]; // total: 0.884ms
+[session step:@"step1"]; 	// step1: 0.004ms
+[session step:@"step2"]; 	// step2: 0.320ms
+[session step:@"step3"]; 	// step3: 0.298ms
+[session total]; 			// total: 0.884ms
 [MGBenchmark finish:@"demo"];
 ```
 
