@@ -31,7 +31,7 @@
 }
 
 @property (nonatomic) NSString *name;
-@property (nonatomic) <MGBenchmarkTarget> target;
+@property (nonatomic) id <MGBenchmarkTarget> target;
 @property (nonatomic, readonly) NSUInteger stepCount;
 @property (nonatomic, readonly) NSTimeInterval averageTime;
 
