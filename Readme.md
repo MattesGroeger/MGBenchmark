@@ -1,6 +1,6 @@
 ## Introduction
 
-Easily measure execution times within code. This is especially interesting for load operations that are difficult to profile with [Instruments](http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html).
+Easily measure code execution times. This is especially interesting for load operations that are difficult to profile with [Instruments](http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html).
 
 ### Features
 
