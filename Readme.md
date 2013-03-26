@@ -131,7 +131,13 @@ id session = [MGBenchmark start:@"demo"];
 
 ### Custom output target
 
-If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol. Here is an example that sends the results to [Flurry](http://www.flurry.com/flurry-analytics.html). Note that you need to initialize Flurry beforehand.
+If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol. It declares 3 methods which are all optional:
+
+* `sessionStarted:` – to keep a reference to the current session
+* `passedTime:forStep:` – called for step time benchmark
+* `totalTime:` – called for total time benchmark
+
+Here is an example that sends the total benchmark to [Flurry](http://www.flurry.com/flurry-analytics.html). Note that you need to initialize Flurry beforehand.
 
 ```obj-c
 @interface FlurryTarget : NSObject <MGBenchmarkTarget>
@@ -148,11 +154,6 @@ If you want to use a different output format, the best way is to define a custom
 - (void)sessionStarted:(MGBenchmarkSession *)session
 {
 	_session = session;
-}
-
-- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step
-{
-	// ignore steps
 }
 
 - (void)totalTime:(NSTimeInterval)passedTime
@@ -175,6 +176,10 @@ Use your custom output target:
 ```
 
 ## Changelog
+
+**0.1.2** (tbd)
+
+* [NEW] `MGBenchmarkTarget` methods are all optional now
 
 **0.1.1** (2013/03/24)
 

@@ -40,7 +40,7 @@
 		_name = name;
 		_target = target;
 
-		if (_target)
+		if (_target && [_target respondsToSelector:@selector(sessionStarted:)])
 			[_target sessionStarted:self];
 	}
 
@@ -61,7 +61,7 @@
 	_lastInterim = [NSDate date];
 	_stepCount++;
 
-	if (_target)
+	if (_target && [_target respondsToSelector:@selector(passedTime:forStep:)])
 		[_target passedTime:timePassed forStep:step];
 
 	return timePassed;
@@ -71,7 +71,7 @@
 {
 	NSTimeInterval timePassed = [self timePassedSince:_startTime];
 
-	if (_target)
+	if (_target && [_target respondsToSelector:@selector(totalTime:)])
 		[_target totalTime:timePassed];
 	
 	return timePassed;

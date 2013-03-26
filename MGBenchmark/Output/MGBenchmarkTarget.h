@@ -26,6 +26,8 @@
 
 @protocol MGBenchmarkTarget <NSObject>
 
+@optional
+
 /**
 * Will be called as soon as the session started, so the target can access
 * additional data from the session (e.g. the `name` or `stepCount`).
