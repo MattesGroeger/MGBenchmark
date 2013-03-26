@@ -26,34 +26,34 @@
 #import "MGConsoleOutput.h"
 
 
-NSMutableDictionary *_sessions;
-id <MGBenchmarkTarget> _defaultTarget;
-dispatch_queue_t _benchmarkQueue;
+static NSMutableDictionary *sessions;
+static id <MGBenchmarkTarget> defaultTarget;
+static dispatch_queue_t benchmarkQueue;
 
 @implementation MGBenchmark
 
 + (void)initialize
 {
-	_sessions = [NSMutableDictionary dictionary];
-	_defaultTarget = [[MGConsoleOutput alloc] init];
-	_benchmarkQueue = dispatch_queue_create("de.mattesgroeger.benchmark", NULL);
+	sessions = [NSMutableDictionary dictionary];
+	defaultTarget = [[MGConsoleOutput alloc] init];
+	benchmarkQueue = dispatch_queue_create("de.mattesgroeger.benchmark", NULL);
 }
 
 + (void)setDefaultTarget:(id <MGBenchmarkTarget>)target
 {
-	dispatch_sync(_benchmarkQueue, ^
+	dispatch_sync(benchmarkQueue, ^
 	{
-		_defaultTarget = target;
+		defaultTarget = target;
 	});
 }
 
 + (MGBenchmarkSession *)start:(NSString *)sessionName
 {
-	__block MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:_defaultTarget];
+	__block MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:defaultTarget];
 
-	dispatch_sync(_benchmarkQueue, ^
+	dispatch_sync(benchmarkQueue, ^
 	{
-		_sessions[sessionName] = session;
+		sessions[sessionName] = session;
 	});
 
 	return session;
@@ -63,9 +63,9 @@ dispatch_queue_t _benchmarkQueue;
 {
 	__block MGBenchmarkSession *session = nil;
 
-	dispatch_sync(_benchmarkQueue, ^
+	dispatch_sync(benchmarkQueue, ^
 	{
-		session = _sessions[sessionName];
+		session = sessions[sessionName];
 	});
 
 	return session;
@@ -73,9 +73,9 @@ dispatch_queue_t _benchmarkQueue;
 
 + (void)finish:(NSString *)sessionName
 {
-	dispatch_sync(_benchmarkQueue, ^
+	dispatch_sync(benchmarkQueue, ^
 	{
-		[_sessions removeObjectForKey:sessionName];
+		[sessions removeObjectForKey:sessionName];
 	});
 }
 
