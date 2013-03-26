@@ -21,55 +21,41 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import "MGBenchmarkTarget.h"
+#import "MGConsoleOutput.h"
 
-@class MGBenchmarkSession;
+@interface MGBenchmarkStepData : NSObject
 
-@interface MGConsoleOutput : NSObject <MGBenchmarkTarget>
+@property (nonatomic, strong) NSString *stepName;
+@property (nonatomic) NSTimeInterval stepTime;
+@property (nonatomic) NSUInteger stepCount;
+
+@end
+
+@interface MGConsoleSummaryOutput : MGConsoleOutput
 {
-	MGBenchmarkSession *_session;
+	NSMutableArray *_stepData;
+	NSTimeInterval _totalStepTime;
 }
 
 /**
-* You can define a custom output string for each step by using the following
-* placeholders:
-*
-* ${sessionName}
-* ${stepName}
-* ${passedTime}
-* ${stepCount}
-*
-* Example:
-* consoleOutput.stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
+* Set this to yes, if you still want to get direct logs for each steps. Usually
+* this is not necessary anymore because you get them later as a sorted list.
 */
-@property (strong) NSString *stepFormat;
+@property (nonatomic) BOOL logStepsInstantly;
 
 /**
 * You can define a custom output string for the total time by using the
 * following placeholders:
 *
 * ${sessionName}
-* ${passedTime}
-* ${stepCount}
-* ${averageTime}
+* ${stepTime}
+* ${stepName}
+* ${stepPercent}
+* ${stepNumber}
 *
 * Example:
-* consoleOutput.totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} (${stepCount} steps, average ${averageTime}) >>";
+* consoleOutput.totalFormat = @"<< BENCHMARK ${stepTime} (${stepPercent}%) ${stepName} >>";
 */
-@property (nonatomic, strong) NSString *totalFormat;
-
-/**
-* You can define a custom time format using the `stringWithFormat` notation
-* for float values. By default it will use @"%.5fs", resulting in "1.34245s"
-* for example.
-*/
-@property (nonatomic, strong) NSString *timeFormat;
-
-/**
-* In case you want to output the time in MS or Minutes rather then seconds,
-* use the multiplier (e.g. 1000 for MS).
-*/
-@property (nonatomic) CGFloat timeMultiplier;
+@property (nonatomic, strong) NSString *summaryFormat;
 
 @end

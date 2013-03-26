@@ -6,6 +6,7 @@ Easily measure code execution times. This is especially interesting for load ope
 
 * Measure total execution times
 * Measure individual steps of execution
+* Find steps that take longest
 * Get the average execution time of all steps
 * Have multiple benchmark sessions at the same time
 * Implement custom output targets
@@ -57,9 +58,10 @@ MGBenchmarkSession *session = [MGBenchmark start:@"demo"];
 
 ## Customizing the logs
 
-There are 3 different ways to customize the benchmark results:
+There are different ways to customize the benchmark results:
 * Directly use the results
-* Customize the console output
+* Customize the default target
+* Choose another pre-defined target
 * Implement your own output target
 
 ### Using results directly
@@ -90,7 +92,7 @@ You can also access the amount of steps as well as the average execution times:
 NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount, benchmark.averageTime); // 3.03s (steps: 2 | average: 2.02s)
 ```
 
-### Customize the MGConsoleOutput
+### Customize the default target MGConsoleOutput
 
 The provided console target is very customizable. You can configure the output by providing strings containing placeholders. The available placeholders differ for the `step:` and `total` benchmark:
 
@@ -128,6 +130,28 @@ id session = [MGBenchmark start:@"demo"];
 [session total]; 			// total: 0.884ms
 [MGBenchmark finish:@"demo"];
 ```
+
+### MGConsoleSummaryOutput
+
+Use this target to find steps that take longest. When using the `total` method it will print out all individual steps ordered by time.
+
+Using...
+
+```obj-c
+[MGBenchmark setDefaultTarget:[[MGConsoleSummaryOutput alloc] init]];
+```
+
+... will result in these logs:
+
+```
+total: 0.035ms       
+<< BENCHMARK [demo/total] 4.00138s (3 steps, average 1.33379s) >>
+<< BENCHMARK 2.00084s (50.0%) step2 >>                           
+<< BENCHMARK 1.00039s (25.0%) step1 >>                           
+<< BENCHMARK 1.00010s (25.0%) step3 >>
+```
+
+You can customize this target as well ([see the example code](https://github.com/MattesGroeger/MGBenchmark/blob/master/MGBenchmarkExample/ViewController.m)).
 
 ### Custom output target
 
@@ -180,6 +204,7 @@ Use your custom output target:
 **0.1.2** (tbd)
 
 * [NEW] `MGBenchmarkTarget` methods are all optional now
+* [NEW] `MGConsoleSummaryOutput` for sorted step times (what takes longest?)
 
 **0.1.1** (2013/03/24)
 

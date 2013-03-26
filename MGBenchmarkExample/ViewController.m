@@ -24,10 +24,7 @@
 #import "MGBenchmark.h"
 #import "MGBenchmarkSession.h"
 #import "MGConsoleOutput.h"
-
-@interface ViewController ()
-
-@end
+#import "MGConsoleSummaryOutput.h"
 
 @implementation ViewController
 
@@ -35,11 +32,49 @@
 {
     [super viewDidLoad];
 
-	[self defaultUsage];
+	[self standardOutput];
 	[self customizedOutput];
+	[self summaryOutput];
 }
 
-- (void)defaultUsage
+- (void)standardOutput
+{
+	NSLog(@"### DEFAULT OUTPUT ###");
+
+	[self startBenchmark];
+}
+
+- (void)customizedOutput
+{
+	NSLog(@"### CUSTOMIZED OUTPUT ###");
+
+	MGConsoleOutput *output = [[MGConsoleOutput alloc] init];
+	output.timeMultiplier = 1000; // to get ms rather than seconds
+	output.timeFormat = @"%.3fms"; // with 3 digits after comma
+	output.stepFormat = @"${stepName}: ${passedTime}";
+	output.totalFormat = @"total: ${passedTime}";
+
+	[MGBenchmark setDefaultTarget:output];
+
+	[self startBenchmark];
+}
+
+- (void)summaryOutput
+{
+	NSLog(@"### CUSTOMIZED SUMMARY OUTPUT ###");
+
+	MGConsoleSummaryOutput *output = [[MGConsoleSummaryOutput alloc] init];
+	output.timeMultiplier = 1000; // to get ms rather than seconds
+	output.timeFormat = @"%.3fms"; // with 3 digits after comma
+	output.totalFormat = @"total: ${passedTime}";
+	output.summaryFormat = @"${stepTime} (${stepPercent}%) ${stepName}";
+
+	[MGBenchmark setDefaultTarget:output];
+
+	[self startBenchmark];
+}
+
+- (void)startBenchmark
 {
 	[MGBenchmark start:@"demo"];
 
@@ -50,19 +85,6 @@
 	[[MGBenchmark session:@"demo"] total];
 
 	[MGBenchmark finish:@"demo"];
-}
-
-- (void)customizedOutput
-{
-	MGConsoleOutput *output = [[MGConsoleOutput alloc] init];
-	output.timeMultiplier = 1000; // to get ms rather than seconds
-	output.timeFormat = @"%.3fms"; // with 3 digits after comma
-	output.stepFormat = @"${stepName}: ${passedTime}";
-	output.totalFormat = @"total: ${passedTime}";
-
-	[MGBenchmark setDefaultTarget:output];
-
-	[self defaultUsage];
 }
 
 @end

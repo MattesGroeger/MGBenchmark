@@ -20,11 +20,16 @@
  * THE SOFTWARE.
  */
 
-#import "MGConsoleOutput.h"
+#import "MGConsoleSummaryOutput.h"
 #import "MGBenchmarkSession.h"
 #import "MGConsoleUtil.h"
 
-@implementation MGConsoleOutput
+
+@implementation MGBenchmarkStepData
+
+@end
+
+@implementation MGConsoleSummaryOutput
 
 - (id)init
 {
@@ -32,38 +37,51 @@
 
 	if (self)
 	{
-		_stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
-		_totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} (${stepCount} steps, average ${averageTime}) >>";
-		_timeFormat = @"%.5fs";
-		_timeMultiplier = 1;
+		_stepData = [NSMutableArray array];
+		_totalStepTime = 0;
+		_logStepsInstantly = NO;
+		_summaryFormat = @"<< BENCHMARK ${stepTime} (${stepPercent}%) ${stepName} >>";
 	}
 
 	return self;
 }
 
-- (void)sessionStarted:(MGBenchmarkSession *)session
-{
-	_session = session;
-}
-
 - (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
 {
-	[MGConsoleUtil logWithFormat:_stepFormat andReplacement:@{
-			@"sessionName": _session.name,
-			@"stepName": stepName,
-			@"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
-			@"stepCount": @(_session.stepCount)
-	}];
+	if (_logStepsInstantly)
+		[super passedTime:passedTime forStep:stepName];
+
+	MGBenchmarkStepData *data = [[MGBenchmarkStepData alloc] init];
+	data.stepCount = _session.stepCount;
+	data.stepTime = passedTime;
+	data.stepName = stepName;
+
+	[_stepData addObject:data];
+
+	_totalStepTime += passedTime;
 }
 
 - (void)totalTime:(NSTimeInterval)passedTime
 {
-	[MGConsoleUtil logWithFormat:_totalFormat andReplacement:@{
-			@"sessionName": _session.name,
-			@"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
-			@"stepCount": @(_session.stepCount),
-			@"averageTime": [MGConsoleUtil formatTime:_session.averageTime format:_timeFormat multiplier:_timeMultiplier]
+	[super totalTime:passedTime];
+
+	NSArray *sortedSteps = [_stepData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+	{
+		NSTimeInterval first = [(MGBenchmarkStepData *) a stepTime];
+		NSTimeInterval second = [(MGBenchmarkStepData *) b stepTime];
+		return [@(second) compare:@(first)];
 	}];
+
+	for (MGBenchmarkStepData *data in sortedSteps)
+	{
+		[MGConsoleUtil logWithFormat:_summaryFormat andReplacement:@{
+				@"sessionName": _session.name,
+				@"stepTime": [MGConsoleUtil formatTime:data.stepTime format:self.timeFormat multiplier:self.timeMultiplier],
+				@"stepPercent": [NSString stringWithFormat:@"%.1f", data.stepTime / _totalStepTime * 100],
+				@"stepName": data.stepName,
+				@"stepNumber": @(data.stepCount)
+		}];
+	}
 }
 
 @end

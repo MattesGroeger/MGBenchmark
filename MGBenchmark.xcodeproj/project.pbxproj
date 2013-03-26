@@ -30,8 +30,13 @@
 		ADFD2C0D16FF090900A75E0A /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFD2C0B16FF090900A75E0A /* MainStoryboard_iPad.storyboard */; };
 		ADFD2C1016FF090900A75E0A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFD2C0F16FF090900A75E0A /* ViewController.m */; };
 		ADFD2C1616FF0A3800A75E0A /* libMGBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */; };
+		BF8D907568738BF90B0C6690 /* MGConsoleSummaryOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9E9A637C2B7D227D4E9B /* MGConsoleSummaryOutput.m */; };
+		BF8D90A1176B4BA518CB93A5 /* MGConsoleSummaryOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E22101B25570D94EB3C /* MGConsoleSummaryOutput.h */; };
 		BF8D91BB4AD9BB858C8AEA2C /* MGBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D985791FC705006A9A5C4 /* MGBenchmark.m */; };
+		BF8D92504828E700535DB76B /* MGConsoleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9A4378B2A509C9D3CB9B /* MGConsoleUtil.m */; };
+		BF8D9396999543E5C775ECBB /* MGConsoleUtilSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D946D5AF5F400B44DF4A8 /* MGConsoleUtilSpec.m */; };
 		BF8D9863908FAD7280FFBE74 /* MGBenchmark.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D92987D97801EC52DA95A /* MGBenchmark.h */; };
+		BF8D9A4569DCDEE2241E722B /* MGConsoleUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9C088E212A369D320E01 /* MGConsoleUtil.h */; };
 		BF8D9FDEE6A39040D1C54319 /* MGBenchmarkSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */; };
 		DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */; };
 		DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */; };
@@ -66,6 +71,8 @@
 				DB9E990BDD68D104BAD8196E /* MGBenchmarkTarget.h in CopyFiles */,
 				DB9E9B707014B5C47AD7F1CD /* MGConsoleOutput.h in CopyFiles */,
 				BF8D9863908FAD7280FFBE74 /* MGBenchmark.h in CopyFiles */,
+				BF8D90A1176B4BA518CB93A5 /* MGConsoleSummaryOutput.h in CopyFiles */,
+				BF8D9A4569DCDEE2241E722B /* MGConsoleUtil.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +107,12 @@
 		ADFD2C0E16FF090900A75E0A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ADFD2C0F16FF090900A75E0A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BF8D92987D97801EC52DA95A /* MGBenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmark.h; sourceTree = "<group>"; };
+		BF8D946D5AF5F400B44DF4A8 /* MGConsoleUtilSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConsoleUtilSpec.m; sourceTree = "<group>"; };
 		BF8D985791FC705006A9A5C4 /* MGBenchmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBenchmark.m; sourceTree = "<group>"; };
+		BF8D9A4378B2A509C9D3CB9B /* MGConsoleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConsoleUtil.m; sourceTree = "<group>"; };
+		BF8D9C088E212A369D320E01 /* MGConsoleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConsoleUtil.h; sourceTree = "<group>"; };
+		BF8D9E22101B25570D94EB3C /* MGConsoleSummaryOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConsoleSummaryOutput.h; sourceTree = "<group>"; };
+		BF8D9E9A637C2B7D227D4E9B /* MGConsoleSummaryOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConsoleSummaryOutput.m; sourceTree = "<group>"; };
 		BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBenchmarkSpec.m; sourceTree = "<group>"; };
 		CF665F226B4B4DD286F3971A /* libPods-MGBenchmarkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGBenchmarkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConsoleOutput.h; sourceTree = "<group>"; };
@@ -204,6 +216,7 @@
 				21FB4FA916FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m */,
 				21FB4FA316FCBA7B00A9CA26 /* Supporting Files */,
 				BF8D9F9E36712B1E8BCE23D4 /* MGBenchmarkSpec.m */,
+				BF8D999745E5167E0429A7EF /* Output */,
 			);
 			path = MGBenchmarkTests;
 			sourceTree = "<group>";
@@ -245,12 +258,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BF8D999745E5167E0429A7EF /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D946D5AF5F400B44DF4A8 /* MGConsoleUtilSpec.m */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
 		DB9E98AE56E618E2F16F8A32 /* Output */ = {
 			isa = PBXGroup;
 			children = (
 				DB9E980DC688B693831E03E3 /* MGBenchmarkTarget.h */,
 				DB9E9F26C847141446E0E294 /* MGConsoleOutput.m */,
 				DB9E9781AD62C0556F817C70 /* MGConsoleOutput.h */,
+				BF8D9E9A637C2B7D227D4E9B /* MGConsoleSummaryOutput.m */,
+				BF8D9E22101B25570D94EB3C /* MGConsoleSummaryOutput.h */,
+				BF8D9A4378B2A509C9D3CB9B /* MGConsoleUtil.m */,
+				BF8D9C088E212A369D320E01 /* MGConsoleUtil.h */,
 			);
 			path = Output;
 			sourceTree = "<group>";
@@ -403,6 +428,8 @@
 				21FB4F9316FCBA7A00A9CA26 /* MGBenchmarkSession.m in Sources */,
 				DB9E9E7D4E600DA2C3C72485 /* MGConsoleOutput.m in Sources */,
 				BF8D91BB4AD9BB858C8AEA2C /* MGBenchmark.m in Sources */,
+				BF8D907568738BF90B0C6690 /* MGConsoleSummaryOutput.m in Sources */,
+				BF8D92504828E700535DB76B /* MGConsoleUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +439,7 @@
 			files = (
 				21FB4FAA16FCBA7B00A9CA26 /* MGBenchmarkSessionSpec.m in Sources */,
 				BF8D9FDEE6A39040D1C54319 /* MGBenchmarkSpec.m in Sources */,
+				BF8D9396999543E5C775ECBB /* MGConsoleUtilSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
