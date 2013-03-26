@@ -187,3 +187,9 @@ Use your custom output target:
 * [NEW] Get the average execution time of all steps
 * [NEW] Have multiple benchmark sessions at the same time
 * [NEW] Implement custom output targets
+
+## Contribution
+
+This library is released under the [MIT licence](http://opensource.org/licenses/MIT). Contributions are more than welcome!
+
+Also, follow me on Twitter if you like: [@MattesGroeger](https://twitter.com/MattesGroeger).
