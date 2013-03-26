@@ -201,9 +201,9 @@ Use your custom output target:
 
 ## Changelog
 
-**0.1.2** (tbd)
+**0.1.2** (2013/03/27)
 
-* [NEW] `MGBenchmarkTarget` methods are all optional now
+* [NEW] `MGBenchmarkTarget` protocol methods are optional now
 * [NEW] `MGConsoleSummaryOutput` for sorted step times (what takes longest?)
 
 **0.1.1** (2013/03/24)
