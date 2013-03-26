@@ -26,10 +26,22 @@
 
 @protocol MGBenchmarkTarget <NSObject>
 
+/**
+* Will be called as soon as the session started, so the target can access
+* additional data from the session (e.g. the `name` or `stepCount`).
+*/
 - (void)sessionStarted:(MGBenchmarkSession *)session;
 
-- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)step;
+/**
+* Gets called for in-between steps in a benchmark session. The time since
+* the last step (if any) or since the session start is passed in.
+*/
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName;
 
+/**
+* This method is called when the total time since session start was
+* measured. It gets passed in as `passedTime`.
+*/
 - (void)totalTime:(NSTimeInterval)passedTime;
 
 @end
