@@ -28,6 +28,7 @@
 
 NSMutableDictionary *_sessions;
 id <MGBenchmarkTarget> _defaultTarget;
+dispatch_queue_t _benchmarkQueue;
 
 @implementation MGBenchmark
 
@@ -35,30 +36,47 @@ id <MGBenchmarkTarget> _defaultTarget;
 {
 	_sessions = [NSMutableDictionary dictionary];
 	_defaultTarget = [[MGConsoleOutput alloc] init];
+	_benchmarkQueue = dispatch_queue_create("de.mattesgroeger.benchmark", NULL);
 }
 
 + (void)setDefaultTarget:(id <MGBenchmarkTarget>)target
 {
-	_defaultTarget = target;
+	dispatch_sync(_benchmarkQueue, ^
+	{
+		_defaultTarget = target;
+	});
 }
 
 + (MGBenchmarkSession *)start:(NSString *)sessionName
 {
-	MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:_defaultTarget];
+	__block MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:_defaultTarget];
 
-	_sessions[sessionName] = session;
+	dispatch_sync(_benchmarkQueue, ^
+	{
+		_sessions[sessionName] = session;
+	});
 
 	return session;
 }
 
 + (MGBenchmarkSession *)session:(NSString *)sessionName
 {
-	return _sessions[sessionName];
+	__block MGBenchmarkSession *session = nil;
+
+	dispatch_sync(_benchmarkQueue, ^
+	{
+		session = _sessions[sessionName];
+	});
+
+	return session;
 }
 
 + (void)finish:(NSString *)sessionName
 {
-	[_sessions removeObjectForKey:sessionName];
+	dispatch_sync(_benchmarkQueue, ^
+	{
+		[_sessions removeObjectForKey:sessionName];
+	});
 }
 
 @end
