@@ -10,6 +10,7 @@ Easily measure code execution times. This is especially interesting for load ope
 * Get the average execution time of all steps
 * Have multiple benchmark sessions at the same time
 * Implement custom output targets
+* Measure times across different threads (thread-safe)
 
 ## Installation via CocoaPods
 
@@ -203,6 +204,7 @@ Use your custom output target:
 
 **0.1.2** (2013/03/27)
 
+* [NEW] `MGBenchmark` is now thread-safe
 * [NEW] `MGBenchmarkTarget` protocol methods are optional now
 * [NEW] `MGConsoleSummaryOutput` for sorted step times (what takes longest?)
 

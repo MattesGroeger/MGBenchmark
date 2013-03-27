@@ -73,6 +73,16 @@ describe(@"MGBenchmark", ^
 
 		[MGBenchmark finish:@"foo"];
 	});
+
+	it(@"should be able to access session from different thread", ^
+	{
+		__block MGBenchmarkSession *session = [MGBenchmark start:@"foo"];
+
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
+		{
+			[[[MGBenchmark session:@"foo"] should] equal:session];
+		});
+	});
 });
 
 SPEC_END
