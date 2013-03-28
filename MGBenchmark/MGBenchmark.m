@@ -36,7 +36,7 @@ static dispatch_queue_t benchmarkQueue;
 {
 	sessions = [NSMutableDictionary dictionary];
 	defaultTarget = [[MGConsoleOutput alloc] init];
-	benchmarkQueue = dispatch_queue_create("de.mattesgroeger.benchmark", NULL);
+	benchmarkQueue = dispatch_queue_create("de.mattesgroeger.benchmark", DISPATCH_QUEUE_SERIAL);
 }
 
 + (void)setDefaultTarget:(id <MGBenchmarkTarget>)target
