@@ -57,7 +57,21 @@ MGBenchmarkSession *session = [MGBenchmark start:@"demo"];
 [MGBenchmark finish:@"demo"]; // garbage collect
 ```
 
-## Customizing the logs
+## Live Environment
+
+You can keep the benchmark code integrated even in the live environment. But rather then logging to the console, you should send the results [to a tracking database](#custom-output-target). Or set the target to `nil` to ignore the results.
+
+```objc
+#if DEBUG
+[MGBenchmark setDefaultTarget:[[MGConsoleOutput alloc] init]]; // log to console
+#else
+[MGBenchmark setDefaultTarget:nil]; // ignore results
+#elif RELEASE
+[MGBenchmark setDefaultTarget:[[FlurryTarget alloc] init]]; // send to server
+#endif
+```
+
+## Customizing the Logs
 
 There are different ways to customize the benchmark results:
 * Directly use the results
@@ -65,7 +79,7 @@ There are different ways to customize the benchmark results:
 * Choose another pre-defined target
 * Implement your own output target
 
-### Using results directly
+### Using Results Directly
 
 You can easily create your own console logs. For that you should disable the default console output:
 
@@ -93,7 +107,7 @@ You can also access the amount of steps as well as the average execution times:
 NSLog(@"%.2fs (steps: %d | average: %d)", [benchmark total], benchmark.stepCount, benchmark.averageTime); // 3.03s (steps: 2 | average: 2.02s)
 ```
 
-### Customize the default target MGConsoleOutput
+### Customize the Default Target MGConsoleOutput
 
 The provided console target is very customizable. You can configure the output by providing strings containing placeholders. The available placeholders differ for the `step:` and `total` benchmark:
 
@@ -154,7 +168,7 @@ total: 0.035ms
 
 You can customize this target as well ([see the example code](https://github.com/MattesGroeger/MGBenchmark/blob/master/MGBenchmarkExample/ViewController.m)).
 
-### Custom output target
+### Custom Output Target
 
 If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol. It declares 3 methods which are all optional:
 
