@@ -216,7 +216,7 @@ Use your custom output target:
 
 ## Changelog
 
-**0.1.2** (2013/03/27)
+**0.2.0** (2013/03/28)
 
 * [NEW] `MGBenchmark` is now thread-safe
 * [NEW] `MGBenchmarkTarget` protocol methods are optional now
