@@ -1,4 +1,4 @@
-## Introduction
+Q## Introduction
 
 Easily measure code execution times. This is especially interesting for load operations that are difficult to profile with [Instruments](http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html).
 
@@ -64,10 +64,10 @@ You can keep the benchmark code integrated even in the live environment. But rat
 ```objc
 #if DEBUG
 [MGBenchmark setDefaultTarget:[[MGConsoleOutput alloc] init]]; // log to console
-#else
-[MGBenchmark setDefaultTarget:nil]; // ignore results
 #elif RELEASE
 [MGBenchmark setDefaultTarget:[[FlurryTarget alloc] init]]; // send to server
+#else
+[MGBenchmark setDefaultTarget:nil]; // ignore results
 #endif
 ```
 
