@@ -159,7 +159,6 @@ Using...
 ... will result in these logs:
 
 ```
-total: 0.035ms       
 << BENCHMARK [demo/total] 4.00138s (3 steps, average 1.33379s) >>
 << BENCHMARK 2.00084s (50.0%) step2 >>                           
 << BENCHMARK 1.00039s (25.0%) step1 >>                           
