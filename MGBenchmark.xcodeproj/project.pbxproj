@@ -563,9 +563,11 @@
 				DSTROOT = /tmp/MGBenchmark.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 			};
 			name = Debug;
 		};
@@ -578,6 +580,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 			};
 			name = Release;
 		};
@@ -592,7 +595,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
 				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -609,6 +615,8 @@
 				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
 				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
