@@ -13,17 +13,28 @@ class String
 end
 
 desc 'Run the tests'
-task :test do
-  test_result = compile_tests()
-
-  puts "\n\n\n" if verbose
-  puts "iOS: #{test_result == 0 ? 'PASSED'.green : 'FAILED'.red}"
+task :build do
+  buildAndLogScheme("")
+  buildAndLogScheme("Example")
+  buildAndLogScheme("Tests")
 end
 
-task :default => :test
+task :default => :build
 
-def compile_tests
-  command = "xcodebuild -workspace MGBenchmark.xcworkspace -scheme MGBenchmarkTests -configuration Debug -sdk iphonesimulator" 
+def buildAndLogScheme(name)
+  workspace = Dir["*.xcworkspace"].first
+  scheme = workspace.gsub(".xcworkspace", name)
+  result = compile(workspace, scheme)
+  log(scheme, result)
+end
+
+def log(scheme, result)
+  scheme = "Default" if scheme == ""
+  puts "#{scheme}: #{result == 0 ? 'PASSED'.green : 'FAILED'.red}"
+end
+
+def compile(workspace, scheme)
+  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Debug -sdk iphonesimulator -verbose" 
   IO.popen(command) do |io|
     while line = io.gets do
       puts line

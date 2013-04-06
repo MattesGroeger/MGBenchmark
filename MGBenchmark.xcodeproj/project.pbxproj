@@ -632,6 +632,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGBenchmarkExample/MGBenchmarkExample-Prefix.pch";
 				INFOPLIST_FILE = "MGBenchmarkExample/MGBenchmarkExample-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
