@@ -34,7 +34,7 @@ def log(scheme, result)
 end
 
 def compile(workspace, scheme)
-  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Debug -sdk iphonesimulator -verbose" 
+  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator -verbose" 
   IO.popen(command) do |io|
     while line = io.gets do
       puts line
