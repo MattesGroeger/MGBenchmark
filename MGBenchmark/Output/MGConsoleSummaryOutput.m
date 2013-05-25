@@ -34,7 +34,7 @@
 - (id)init
 {
 	self = [super init];
-
+    
 	if (self)
 	{
 		_stepData = [NSMutableArray array];
@@ -42,45 +42,45 @@
 		_logStepsInstantly = NO;
 		_summaryFormat = @"<< BENCHMARK ${stepTime} (${stepPercent}%) ${stepName} >>";
 	}
-
+    
 	return self;
 }
 
-- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName inSession:(MGBenchmarkSession *)session
 {
 	if (_logStepsInstantly)
-		[super passedTime:passedTime forStep:stepName];
-
+		[super passedTime:passedTime forStep:stepName inSession:session];
+    
 	MGBenchmarkStepData *data = [[MGBenchmarkStepData alloc] init];
-	data.stepCount = _session.stepCount;
+	data.stepCount = session.stepCount;
 	data.stepTime = passedTime;
 	data.stepName = stepName;
-
+    
 	[_stepData addObject:data];
-
+    
 	_totalStepTime += passedTime;
 }
 
-- (void)totalTime:(NSTimeInterval)passedTime
+- (void)totalTime:(NSTimeInterval)passedTime inSession:(MGBenchmarkSession *)session
 {
-	[super totalTime:passedTime];
-
+	[super totalTime:passedTime inSession:session];
+    
 	NSArray *sortedSteps = [_stepData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
-	{
-		NSTimeInterval first = [(MGBenchmarkStepData *) a stepTime];
-		NSTimeInterval second = [(MGBenchmarkStepData *) b stepTime];
-		return [@(second) compare:@(first)];
-	}];
-
+                            {
+                                NSTimeInterval first = [(MGBenchmarkStepData *) a stepTime];
+                                NSTimeInterval second = [(MGBenchmarkStepData *) b stepTime];
+                                return [@(second) compare:@(first)];
+                            }];
+    
 	for (MGBenchmarkStepData *data in sortedSteps)
 	{
 		[MGConsoleUtil logWithFormat:_summaryFormat andReplacement:@{
-				@"sessionName": _session.name,
-				@"stepTime": [MGConsoleUtil formatTime:data.stepTime format:self.timeFormat multiplier:self.timeMultiplier],
-				@"stepPercent": [NSString stringWithFormat:@"%.1f", data.stepTime / _totalStepTime * 100],
-				@"stepName": data.stepName,
-				@"stepNumber": @(data.stepCount)
-		}];
+         @"sessionName": session.name,
+         @"stepTime": [MGConsoleUtil formatTime:data.stepTime format:self.timeFormat multiplier:self.timeMultiplier],
+         @"stepPercent": [NSString stringWithFormat:@"%.1f", data.stepTime / _totalStepTime * 100],
+         @"stepName": data.stepName,
+         @"stepNumber": @(data.stepCount)
+         }];
 	}
 }
 
