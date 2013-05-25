@@ -39,6 +39,11 @@
 * of the session is returned.
 */
 + (MGBenchmarkSession *)start:(NSString *)sessionName;
+// Macro version. When DEBUG is not set, method is ignored
+#define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
+#ifndef DEBUG
+#define MGBenchStart(__SESSION__) do {} while (0)
+#endif
 
 /**
 * Returns session by name. You need to start it first!
@@ -50,5 +55,11 @@
 * in case the session is otherwise not referenced anymore.
 */
 + (void)finish:(NSString *)sessionName;
+// Macro version. When DEBUG is not set, method is ignored
+// It also runs [MGBenchmarkSession total] for log output prior to finishing
+#define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
+#ifndef DEBUG
+#define MGBenchEnd(__SESSION__) do {} while (0)
+#endif
 
 @end

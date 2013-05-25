@@ -38,7 +38,17 @@
 - (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target;
 
 - (NSTimeInterval)step:(NSString *)null;
+// Macro version. When DEBUG is not set, method is ignored
+#define MGBenchStep(__SESSION__) [[MGBenchmark session:__SESSION__] step:[NSString stringWithFormat:@"%@ %@", [self class], NSStringFromSelector(_cmd)]]
+#ifndef DEBUG
+#define MGBenchStep(__SESSION__) do {} while (0)
+#endif
 
 - (NSTimeInterval)total;
+// Macro version. When DEBUG is not set, method is ignored
+#define MGBenchTotal(__SESSION__) [[MGBenchmark session:__SESSION__] total]
+#ifndef DEBUG
+#define MGBenchTotal(__SESSION__) do {} while (0)
+#endif
 
 @end
