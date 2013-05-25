@@ -39,7 +39,11 @@
 
 - (NSTimeInterval)step:(NSString *)null;
 // Macro version. When DEBUG is not set, method is ignored
-#define MGBenchStep(__SESSION__) [[MGBenchmark session:__SESSION__] step:[NSString stringWithFormat:@"%@ %@", [self class], NSStringFromSelector(_cmd)]]
+#define MGBenchStep1Arg(__SESSION__) [[MGBenchmark session:__SESSION__] step:[NSString stringWithFormat:@"%@ %@", [self class], NSStringFromSelector(_cmd)]]
+#define MGBenchStep2Args(__SESSION__, __STEP__) [[MGBenchmark session:__SESSION__] step:__STEP__]
+#define GET_3RD_ARG(arg1, arg2, arg3, ...) arg3
+#define MGBenchStepMacroChooser(__SESSION__, __STEP__) GET_3RD_ARG(__VA_ARGS__, MGBenchStep2Args, MGBenchStep1Arg, )
+#define MGBenchStep(...) MGBenchStepMacroChooser(__VA_ARGS__)(__VA_ARGS__)
 #ifndef DEBUG
 #define MGBenchStep(__SESSION__) do {} while (0)
 #endif
