@@ -44,18 +44,20 @@
 
 #define MGBenchStep_X(x,A,B,FUNC, ...) FUNC
 
-#define MGBenchStep(...)                    MGBenchStep_X(,##__VA_ARGS__,\
+#ifdef DEBUG
+#define MGBenchStep(...) MGBenchStep_X(,##__VA_ARGS__,\
 MGBenchStep_2(__VA_ARGS__),\
 MGBenchStep_1(__VA_ARGS__)\
 )
-#ifndef DEBUG
+#else
 #define MGBenchStep(...) do {} while (0)
 #endif
 
 - (NSTimeInterval)total;
 // Macro version. When DEBUG is not set, method is ignored
+#ifdef DEBUG
 #define MGBenchTotal(__SESSION__) [[MGBenchmark session:__SESSION__] total]
-#ifndef DEBUG
+#else
 #define MGBenchTotal(__SESSION__) do {} while (0)
 #endif
 
