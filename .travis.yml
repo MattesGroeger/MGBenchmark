@@ -1,2 +1,9 @@
 language: objective-c
+before_install:
+  - sudo easy_install cpp-coveralls
+  - brew uninstall xctool
+  - brew update
+  - brew install xctool --HEAD
 script: rake build --trace
+after_success:
+  - ./script/coveralls.sh
