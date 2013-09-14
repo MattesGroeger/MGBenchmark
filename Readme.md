@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/MattesGroeger/MGBenchmark.png?branch=master)](https://travis-ci.org/MattesGroeger/MGBenchmark)
-[![Coverage Status](https://coveralls.io/repos/MattesGroeger/MGBenchmark/badge.png)](https://coveralls.io/r/MattesGroeger/MGBenchmark)
+[![Build Status](https://travis-ci.org/MattesGroeger/MGBenchmark.png?branch=master)](https://travis-ci.org/MattesGroeger/MGBenchmark) [![Coverage Status](https://coveralls.io/repos/MattesGroeger/MGBenchmark/badge.png)](https://coveralls.io/r/MattesGroeger/MGBenchmark)
 
 ## Introduction
 
