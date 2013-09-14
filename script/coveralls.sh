@@ -10,7 +10,7 @@ trim()
 }
 
 # declare BUILT_PRODUCTS_DIR CURRENT_ARCH OBJECT_FILE_DIR_normal SRCROOT OBJROOT 
-declare -r xctoolVars=$(xctool -workspace MGBenchmark.xcworkspace -scheme MGBenchmarkTests -sdk iphonesimulator -showBuildSettings | egrep '(BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' |  egrep -v 'Pods')
+declare -r xctoolVars=$(xctool -workspace MGBenchmark.xcworkspace -scheme MGBenchmarkTests -sdk iphonesimulator -configuration Release -showBuildSettings | egrep '(BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' |  egrep -v 'Pods')
 while read line; do
 	declare key=$(echo "${line}" | cut -d "=" -f1)
 	declare value=$(echo "${line}" | cut -d "=" -f2)
