@@ -27,7 +27,7 @@ task :report do
   
   generate_gcov(gcov_dir)
   copy_gcov_to_project_dir(gcov_dir)
-  send_report
+  send_report([scheme_for_name("Example"), scheme_for_name("Tests"), "Pods"])
   remove_gcov_dir
 end
 
@@ -46,9 +46,13 @@ def copy_gcov_to_project_dir(gcov_dir)
   `cp -r '#{gcov_dir}' gcov`
 end
 
-def send_report
+def send_report(excludes)
   puts "send report..."
-  `coveralls -e 'Pods' --verbose`
+  command = "coveralls --verbose"
+  excludes.each do |exclude|
+    command << " -e '#{exclude}'"
+  end
+  `#{command}`
 end
 
 def remove_gcov_dir
@@ -75,10 +79,8 @@ def log(scheme, result)
 end
 
 def compile(workspace, scheme, is_test)
-#  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator -verbose" 
-#  command << " ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" if is_test
-
   test = is_test ? "test" : ""
+
   command = "xctool #{test} -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator"
   command << " ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" 
 
