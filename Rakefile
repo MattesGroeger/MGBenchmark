@@ -48,7 +48,7 @@ end
 
 def send_report
   puts "send report..."
-  `coveralls`
+  `coveralls -e 'Pods' --verbose`
 end
 
 def remove_gcov_dir
