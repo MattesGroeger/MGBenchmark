@@ -19,13 +19,54 @@ task :build do
   buildAndLogScheme("Tests", true)
 end
 
+desc 'Report code coverage of main target to coveralls.io'
+task :report do
+  scheme = scheme_for_name("")
+  settings = build_settings_per_target(workspace, scheme)[scheme]
+  gcov_dir = "#{settings['OBJECT_FILE_DIR_normal']}/#{settings['CURRENT_ARCH']}"
+  
+  generate_gcov(gcov_dir)
+  copy_gcov_to_project_dir(gcov_dir)
+  send_report
+  remove_gcov_dir
+end
+
 task :default => :build
 
+def generate_gcov(gcov_dir)
+  puts "generate gcov files..."
+  command = "cd #{gcov_dir}"
+  Dir["#{gcov_dir}/*.gcda"].each do |file|
+    command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
+  end
+  `#{command}`
+end
+
+def copy_gcov_to_project_dir(gcov_dir)
+  `cp -r '#{gcov_dir}' gcov`
+end
+
+def send_report
+  puts "send report..."
+  `coveralls`
+end
+
+def remove_gcov_dir
+  `rm -r gcov`
+end
+
 def buildAndLogScheme(name, is_test = false)
-  workspace = Dir["*.xcworkspace"].first
   scheme = workspace.gsub(".xcworkspace", name)
   result = compile(workspace, scheme, is_test)
   log(scheme, result)
+end
+
+def scheme_for_name(name)
+  workspace.gsub(".xcworkspace", name)
+end
+
+def workspace
+  Dir["*.xcworkspace"].first
 end
 
 def log(scheme, result)
@@ -51,4 +92,21 @@ def compile(workspace, scheme, is_test)
       end
     end
   end
+end
+
+def build_settings_per_target(workspace, scheme)
+  settings = `xctool -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator -showBuildSettings`
+  current_target = ""
+  result = {}
+  settings.each_line do |line|
+    if m = line.match(/^Build settings for action build and target (.+):/)
+      current_target = m[1]
+    elsif line.strip! == ""
+      # skip
+    elsif current_target
+      parts = line.split(" = ")
+      (result[current_target] ||= {})[parts[0]] = parts[1]
+    end
+  end
+  result
 end
