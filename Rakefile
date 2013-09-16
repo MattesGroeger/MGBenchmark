@@ -34,14 +34,19 @@ def log(scheme, result)
 end
 
 def compile(workspace, scheme, is_test)
-  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator -verbose" 
-  command << " ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" if is_test
+#  command = "xcodebuild -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator -verbose" 
+#  command << " ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" if is_test
+
+  test = is_test ? "test" : ""
+  command = "xctool #{test} -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator"
+  command << " ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" 
+
   IO.popen(command) do |io|
     while line = io.gets do
       puts line
-      if line == "** BUILD SUCCEEDED **\n"
+      if line.index("** BUILD SUCCEEDED") == 0 or line.index("** TEST SUCCEEDED") == 0
         return 0
-      elsif line == "** BUILD FAILED **\n"
+      elsif line.index("** BUILD FAIL") == 0
         return 1
       end
     end
