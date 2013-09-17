@@ -12,6 +12,12 @@ class String
   end
 end
 
+desc 'Setup coveralls and xctool'
+task :setup do
+  puts `sudo easy_install cpp-coveralls`
+  puts `brew install xctool`
+end
+
 desc 'Run the tests'
 task :build do
   buildAndLogScheme("")
