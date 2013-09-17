@@ -6,4 +6,4 @@ before_install:
   - brew install xctool --HEAD
 script: rake build --trace
 after_success:
-  - rake report --trace
+  - rake coveralls --trace

@@ -20,44 +20,16 @@ task :build do
 end
 
 desc 'Report code coverage of main target to coveralls.io'
-task :report do
-  scheme = scheme_for_name("")
-  settings = build_settings_per_target(workspace, scheme)[scheme]
-  gcov_dir = "#{settings['OBJECT_FILE_DIR_normal']}/#{settings['CURRENT_ARCH']}"
-  
-  generate_gcov(gcov_dir)
-  copy_gcov_to_project_dir(gcov_dir)
+task :coveralls do
+  dir = gcov_dir
+
+  generate_gcov(dir)
+  copy_gcov_to_project_dir(dir)
   send_report([scheme_for_name("Example"), scheme_for_name("Tests"), "Pods"])
   remove_gcov_dir
 end
 
 task :default => :build
-
-def generate_gcov(gcov_dir)
-  puts "generate gcov files..."
-  command = "cd #{gcov_dir}"
-  Dir["#{gcov_dir}/*.gcda"].each do |file|
-    command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
-  end
-  `#{command}`
-end
-
-def copy_gcov_to_project_dir(gcov_dir)
-  `cp -r '#{gcov_dir}' gcov`
-end
-
-def send_report(excludes)
-  puts "send report..."
-  command = "coveralls --verbose"
-  excludes.each do |exclude|
-    command << " -e '#{exclude}'"
-  end
-  `#{command}`
-end
-
-def remove_gcov_dir
-  `rm -r gcov`
-end
 
 def buildAndLogScheme(name, is_test = false)
   scheme = workspace.gsub(".xcworkspace", name)
@@ -94,6 +66,38 @@ def compile(workspace, scheme, is_test)
       end
     end
   end
+end
+
+def gcov_dir
+  scheme = scheme_for_name("")
+  settings = build_settings_per_target(workspace, scheme)[scheme]
+  "#{settings['OBJECT_FILE_DIR_normal']}/#{settings['CURRENT_ARCH']}"
+end
+
+def generate_gcov(gcov_dir)
+  puts "generate gcov files..."
+  command = "cd #{gcov_dir}"
+  Dir["#{gcov_dir}/*.gcda"].each do |file|
+    command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
+  end
+  `#{command}`
+end
+
+def copy_gcov_to_project_dir(gcov_dir)
+  `cp -r '#{gcov_dir}' gcov`
+end
+
+def send_report(excludes)
+  puts "send report..."
+  command = "coveralls --verbose"
+  excludes.each do |exclude|
+    command << " -e '#{exclude}'"
+  end
+  `#{command}`
+end
+
+def remove_gcov_dir
+  `rm -r gcov`
 end
 
 def build_settings_per_target(workspace, scheme)
