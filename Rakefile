@@ -67,8 +67,8 @@ def compile(workspace, scheme, is_test)
       puts line
       if line.index("** BUILD SUCCEEDED") == 0 or line.index("** TEST SUCCEEDED") == 0
         return 0
-      elsif line.index("** BUILD FAIL") == 0
-        return 1
+      elsif line.index("** BUILD FAILED") == 0 or line.index("** TEST FAILED") == 0
+        fail "Build failed"
       end
     end
   end
