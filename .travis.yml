@@ -1,4 +1,1 @@
 language: objective-c
-before_install: rake setup --trace
-script: rake build --trace
-after_success: rake coveralls --trace
