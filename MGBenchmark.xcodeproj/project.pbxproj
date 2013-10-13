@@ -597,7 +597,7 @@
 				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = YES;
+				TEST_AFTER_BUILD = NO;
 				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -615,7 +615,7 @@
 				GCC_PREFIX_HEADER = "MGBenchmark/MGBenchmark-Prefix.pch";
 				INFOPLIST_FILE = "MGBenchmarkTests/MGBenchmarkTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = YES;
+				TEST_AFTER_BUILD = NO;
 				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
