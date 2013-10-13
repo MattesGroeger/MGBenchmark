@@ -403,6 +403,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			showEnvVarsInLog = 0;
 		};
 		66AE8031054343C597C88053 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

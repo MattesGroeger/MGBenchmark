@@ -1,4 +1,2 @@
 language: objective-c
-script:
-  - xcodebuild -workspace MGBenchmark.xcworkspace -scheme MGBenchmark -sdk iphonesimulator -configuration Release
-  - xcodebuild test -workspace MGBenchmark.xcworkspace -scheme MGBenchmarkTests -sdk iphonesimulator
+script: rake build
