@@ -11,6 +11,7 @@ Easily measure code execution times. This is especially interesting for load ope
 * Find steps that take longest
 * Get the average execution time of all steps
 * Have multiple benchmark sessions at the same time
+* Use macros for easy usage
 * Implement custom output targets
 * Measure times across different threads (thread-safe)
 
@@ -30,7 +31,28 @@ Easily measure code execution times. This is especially interesting for load ope
 
 ## Quick Guide
 
-Using the class methods of `MGBenchmark` allows to benchmark times accross classes. No need to pass references around. The results will be shown in the console.
+The quickest way is to use the provided macros. They give you the basic console log functionality with very little code. The benchmark will only work when `DEBUG` is set.
+
+```obj-c
+#import "MGBenchmark.h"
+
+MGBenchStart(@"Test");
+
+// code to measure
+
+MGBenchStep(@"Test", @"1"); // << BENCHMARK [Test/1] 0.01s (step 1) >>
+
+// code to measure
+
+MGBenchStep(@"Test", @"2"); // << BENCHMARK [Test/2] 0.01s (step 2) >>
+MGBenchEnd(@"Test"); // << BENCHMARK [Test/total] 0.02s (2 steps, average 0.01s) >>
+```
+
+That's it. For most cases that should be enough. However if you want to customize the output that's possible as well.
+
+## Class methods
+
+The aforementioned macros use the following class methods under the hood:
 
 ```obj-c
 [MGBenchmark start:@"demo"]; // start measuring
@@ -173,35 +195,25 @@ You can customize this target as well ([see the example code](https://github.com
 
 If you want to use a different output format, the best way is to define a custom target. For that you need to implement the `MGBenchmarkTarget` protocol. It declares 3 methods which are all optional:
 
-* `sessionStarted:` – to keep a reference to the current session
-* `passedTime:forStep:` – called for step time benchmark
-* `totalTime:` – called for total time benchmark
+* `passedTime:forStep:inSession` – called for step time benchmark
+* `totalTime:inSession` – called for total time benchmark
 
 Here is an example that sends the total benchmark to [Flurry](http://www.flurry.com/flurry-analytics.html). Note that you need to initialize Flurry beforehand.
 
 ```obj-c
 @interface FlurryTarget : NSObject <MGBenchmarkTarget>
-{
-    MGBenchmarkSession *_session;
-}
-
 @end
 ```
 
 ```obj-c
 @implementation FlurryTarget
 
-- (void)sessionStarted:(MGBenchmarkSession *)session
+- (void)totalTime:(NSTimeInterval)passedTime inSession:(MGBenchmarkSession*)session
 {
-	_session = session;
-}
-
-- (void)totalTime:(NSTimeInterval)passedTime
-{
-	[Flurry logEvent:_session.name withParameters:@{
+	[Flurry logEvent:session.name withParameters:@{
 		@"totalTime": [NSString stringWithFormat:@"%.5fs", passedTime],
-		@"steps": @(_session.stepCount),
-		@"averageStepTime": [NSString stringWithFormat:@"%.5fs", _session.averageTime]
+		@"steps": @(session.stepCount),
+		@"averageStepTime": [NSString stringWithFormat:@"%.5fs", session.averageTime]
 	}];
 }
 
@@ -216,6 +228,11 @@ Use your custom output target:
 ```
 
 ## Changelog
+
+**0.3.0** (2014/01/17)
+
+* [NEW] Macros for easier usage (Thanks [Nano](https://github.com/workwithnano))
+* [CHANGED] Simplified output target session handling (no need to store session)
 
 **0.2.0** (2013/03/28)
 
