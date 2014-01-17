@@ -1,4 +1,5 @@
 language: objective-c
+rvm: 1.9.3
 before_install: rake setup --trace
 script: rake build --trace
 after_success: rake coveralls --trace
