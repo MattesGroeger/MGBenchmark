@@ -22,6 +22,15 @@
 
 #import <Foundation/Foundation.h>
 
+// Macro version. When DEBUG is not set, method is ignored
+// It also runs [MGBenchmarkSession total] for log output prior to finishing
+#ifdef DEBUG
+	#define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
+	#define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
+#else
+	#define MGBenchStart(__SESSION__) do {} while (0)
+	#define MGBenchEnd(__SESSION__) do {} while (0)
+#endif
 
 @protocol MGBenchmarkTarget;
 @class MGBenchmarkSession;
@@ -29,39 +38,26 @@
 @interface MGBenchmark : NSObject
 
 /**
-* Set a default target. If nothing is provided it will log to the
-* console by default.
-*/
+ * Set a default target. If nothing is provided it will log to the
+ * console by default.
+ */
 + (void)setDefaultTarget:(id <MGBenchmarkTarget>)target;
 
 /**
-* Starts a new session and assigns the `defaultTarget`. An instance
-* of the session is returned.
-*/
+ * Starts a new session and assigns the `defaultTarget`. An instance
+ * of the session is returned.
+ */
 + (MGBenchmarkSession *)start:(NSString *)sessionName;
-// Macro version. When DEBUG is not set, method is ignored
-#ifdef DEBUG
-#define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
-#else
-#define MGBenchStart(__SESSION__) do {} while (0)
-#endif
 
 /**
-* Returns session by name. You need to start it first!
-*/
+ * Returns session by name. You need to start it first!
+ */
 + (MGBenchmarkSession *)session:(NSString *)sessionName;
 
 /**
-* Finishes a session by name. This allows for garbage collection
-* in case the session is otherwise not referenced anymore.
-*/
+ * Finishes a session by name. This allows for garbage collection
+ * in case the session is otherwise not referenced anymore.
+ */
 + (void)finish:(NSString *)sessionName;
-// Macro version. When DEBUG is not set, method is ignored
-// It also runs [MGBenchmarkSession total] for log output prior to finishing
-#ifdef DEBUG
-#define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
-#else
-#define MGBenchEnd(__SESSION__) do {} while (0)
-#endif
 
 @end

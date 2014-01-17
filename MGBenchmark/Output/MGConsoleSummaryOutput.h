@@ -38,24 +38,24 @@
 }
 
 /**
-* Set this to yes, if you still want to get direct logs for each steps. Usually
-* this is not necessary anymore because you get them later as a sorted list.
-*/
+ * Set this to yes, if you still want to get direct logs for each steps. Usually
+ * this is not necessary anymore because you get them later as a sorted list.
+ */
 @property (nonatomic) BOOL logStepsInstantly;
 
 /**
-* You can define a custom output string for the total time by using the
-* following placeholders:
-*
-* ${sessionName}
-* ${stepTime}
-* ${stepName}
-* ${stepPercent}
-* ${stepNumber}
-*
-* Example:
-* consoleOutput.totalFormat = @"<< BENCHMARK ${stepTime} (${stepPercent}%) ${stepName} >>";
-*/
+ * You can define a custom output string for the total time by using the
+ * following placeholders:
+ *
+ * ${sessionName}
+ * ${stepTime}
+ * ${stepName}
+ * ${stepPercent}
+ * ${stepNumber}
+ *
+ * Example:
+ * consoleOutput.totalFormat = @"<< BENCHMARK ${stepTime} (${stepPercent}%) ${stepName} >>";
+ */
 @property (nonatomic, strong) NSString *summaryFormat;
 
 @end

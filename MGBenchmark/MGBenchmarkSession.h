@@ -22,6 +22,22 @@
 
 #import <Foundation/Foundation.h>
 
+// Macro version. When DEBUG is not set, methods are ignored
+#define MGBenchStep_1(__SESSION__) [[MGBenchmark session:__SESSION__] step:[NSString stringWithFormat:@"%@ %@", [self class], NSStringFromSelector(_cmd)]]
+#define MGBenchStep_2(__SESSION__, __STEP__) [[MGBenchmark session:__SESSION__] step:__STEP__]
+#define MGBenchStep_X(x,A,B,FUNC, ...) FUNC
+
+#ifdef DEBUG
+	#define MGBenchStep(...) MGBenchStep_X(,##__VA_ARGS__,\
+		MGBenchStep_2(__VA_ARGS__),\
+		MGBenchStep_1(__VA_ARGS__)\
+	)
+	#define MGBenchTotal(__SESSION__) [[MGBenchmark session:__SESSION__] total]
+#else
+	#define MGBenchStep(...) do {} while (0)
+	#define MGBenchTotal(__SESSION__) do {} while (0)
+#endif
+
 @protocol MGBenchmarkTarget;
 
 @interface MGBenchmarkSession : NSObject
@@ -38,27 +54,7 @@
 - (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target;
 
 - (NSTimeInterval)step:(NSString *)null;
-// Macro version. When DEBUG is not set, method is ignored
-#define MGBenchStep_1(__SESSION__) [[MGBenchmark session:__SESSION__] step:[NSString stringWithFormat:@"%@ %@", [self class], NSStringFromSelector(_cmd)]]
-#define MGBenchStep_2(__SESSION__, __STEP__) [[MGBenchmark session:__SESSION__] step:__STEP__]
-
-#define MGBenchStep_X(x,A,B,FUNC, ...) FUNC
-
-#ifdef DEBUG
-#define MGBenchStep(...) MGBenchStep_X(,##__VA_ARGS__,\
-MGBenchStep_2(__VA_ARGS__),\
-MGBenchStep_1(__VA_ARGS__)\
-)
-#else
-#define MGBenchStep(...) do {} while (0)
-#endif
 
 - (NSTimeInterval)total;
-// Macro version. When DEBUG is not set, method is ignored
-#ifdef DEBUG
-#define MGBenchTotal(__SESSION__) [[MGBenchmark session:__SESSION__] total]
-#else
-#define MGBenchTotal(__SESSION__) do {} while (0)
-#endif
 
 @end

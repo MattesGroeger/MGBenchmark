@@ -32,9 +32,29 @@
 {
     [super viewDidLoad];
 
+	[self macroBench];
 	[self standardOutput];
 	[self customizedOutput];
 	[self summaryOutput];
+}
+
+- (void)macroBench
+{
+	NSLog(@"### MACRO BENCHMARK ###");
+
+	MGBenchStart(@"macro");
+
+	MGBenchStep(@"macro", @"1");
+	MGBenchStep(@"macro", @"2");
+	MGBenchStep(@"macro", @"3");
+
+	MGBenchTotal(@"macro");
+
+	MGBenchStep(@"macro", @"4");
+	MGBenchStep(@"macro", @"5");
+	MGBenchStep(@"macro", @"6");
+
+	MGBenchEnd(@"macro");
 }
 
 - (void)standardOutput
