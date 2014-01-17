@@ -35,8 +35,6 @@ describe(@"MGBenchmarkSession", ^
 	{
 		output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
 
-		[[output should] receive:@selector(sessionStarted:)];
-
 		benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
 
 		[[theValue(benchmark.stepCount) should] equal:theValue(0)];
@@ -48,14 +46,13 @@ describe(@"MGBenchmarkSession", ^
 		beforeEach(^
 		{
 			output = [KWMock mockForProtocol:@protocol(MGBenchmarkTarget)];
-			[[output should] receive:@selector(sessionStarted:)];
-
+			
 			benchmark = [[MGBenchmarkSession alloc] initWithName:nil andTarget:output];
 		});
 
 		it(@"should measure total execution time", ^
 		{
-			[[output shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(totalTime:)];
+			[[output shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(totalTime:inSession:)];
 
 			sleep(1);
 
@@ -66,8 +63,8 @@ describe(@"MGBenchmarkSession", ^
 
 		it(@"should measure steps and total execution time", ^
 		{
-			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(totalTime:) withCount:2];
-			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(passedTime:forStep:) withCount:2];
+			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(totalTime:inSession:) withCount:2];
+			[[output shouldEventuallyBeforeTimingOutAfter(2)] receive:@selector(passedTime:forStep:inSession:) withCount:2];
 
 			sleep(1);
 
