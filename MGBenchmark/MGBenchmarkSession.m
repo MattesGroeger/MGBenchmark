@@ -33,17 +33,14 @@
 - (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target
 {
 	self = [super init];
-
+    
 	if (self)
 	{
 		_lastInterim = _startTime = [NSDate date];
 		_name = name;
 		_target = target;
-
-		if (_target && [_target respondsToSelector:@selector(sessionStarted:)])
-			[_target sessionStarted:self];
 	}
-
+    
 	return self;
 }
 
@@ -51,7 +48,7 @@
 {
 	if (_stepCount == 0)
 		return 0;
-
+    
 	return [_lastInterim timeIntervalSinceDate:_startTime] / _stepCount;
 }
 
@@ -60,19 +57,19 @@
 	NSTimeInterval timePassed = [self timePassedSince:_lastInterim];
 	_lastInterim = [NSDate date];
 	_stepCount++;
-
-	if (_target && [_target respondsToSelector:@selector(passedTime:forStep:)])
-		[_target passedTime:timePassed forStep:step];
-
+    
+	if (_target && [_target respondsToSelector:@selector(passedTime:forStep:inSession:)])
+		[_target passedTime:timePassed forStep:step inSession:self];
+    
 	return timePassed;
 }
 
 - (NSTimeInterval)total
 {
 	NSTimeInterval timePassed = [self timePassedSince:_startTime];
-
-	if (_target && [_target respondsToSelector:@selector(totalTime:)])
-		[_target totalTime:timePassed];
+    
+	if (_target && [_target respondsToSelector:@selector(totalTime:inSession:)])
+		[_target totalTime:timePassed inSession:self];
 	
 	return timePassed;
 }

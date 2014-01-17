@@ -29,7 +29,7 @@
 - (id)init
 {
 	self = [super init];
-
+    
 	if (self)
 	{
 		_stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
@@ -37,33 +37,28 @@
 		_timeFormat = @"%.5fs";
 		_timeMultiplier = 1;
 	}
-
+    
 	return self;
 }
 
-- (void)sessionStarted:(MGBenchmarkSession *)session
-{
-	_session = session;
-}
-
-- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName
+- (void)passedTime:(NSTimeInterval)passedTime forStep:(NSString *)stepName inSession:(MGBenchmarkSession*)session
 {
 	[MGConsoleUtil logWithFormat:_stepFormat andReplacement:@{
-			@"sessionName": _session.name,
-			@"stepName": stepName,
-			@"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
-			@"stepCount": @(_session.stepCount)
-	}];
+     @"sessionName": session.name,
+     @"stepName": stepName,
+     @"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
+     @"stepCount": @(session.stepCount)
+     }];
 }
 
-- (void)totalTime:(NSTimeInterval)passedTime
+- (void)totalTime:(NSTimeInterval)passedTime inSession:(MGBenchmarkSession*)session
 {
 	[MGConsoleUtil logWithFormat:_totalFormat andReplacement:@{
-			@"sessionName": _session.name,
-			@"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
-			@"stepCount": @(_session.stepCount),
-			@"averageTime": [MGConsoleUtil formatTime:_session.averageTime format:_timeFormat multiplier:_timeMultiplier]
-	}];
+     @"sessionName": session.name,
+     @"passedTime": [MGConsoleUtil formatTime:passedTime format:_timeFormat multiplier:_timeMultiplier],
+     @"stepCount": @(session.stepCount),
+     @"averageTime": [MGConsoleUtil formatTime:session.averageTime format:_timeFormat multiplier:_timeMultiplier]
+     }];
 }
 
 @end

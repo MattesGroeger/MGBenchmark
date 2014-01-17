@@ -28,48 +28,47 @@
 
 @interface MGConsoleOutput : NSObject <MGBenchmarkTarget>
 {
-	MGBenchmarkSession *_session;
 }
 
 /**
-* You can define a custom output string for each step by using the following
-* placeholders:
-*
-* ${sessionName}
-* ${stepName}
-* ${passedTime}
-* ${stepCount}
-*
-* Example:
-* consoleOutput.stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
-*/
+ * You can define a custom output string for each step by using the following
+ * placeholders:
+ *
+ * ${sessionName}
+ * ${stepName}
+ * ${passedTime}
+ * ${stepCount}
+ *
+ * Example:
+ * consoleOutput.stepFormat = @"<< BENCHMARK [${sessionName}/${stepName}] ${passedTime} (step ${stepCount}) >>";
+ */
 @property (strong) NSString *stepFormat;
 
 /**
-* You can define a custom output string for the total time by using the
-* following placeholders:
-*
-* ${sessionName}
-* ${passedTime}
-* ${stepCount}
-* ${averageTime}
-*
-* Example:
-* consoleOutput.totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} (${stepCount} steps, average ${averageTime}) >>";
-*/
+ * You can define a custom output string for the total time by using the
+ * following placeholders:
+ *
+ * ${sessionName}
+ * ${passedTime}
+ * ${stepCount}
+ * ${averageTime}
+ *
+ * Example:
+ * consoleOutput.totalFormat = @"<< BENCHMARK [${sessionName}/total] ${passedTime} (${stepCount} steps, average ${averageTime}) >>";
+ */
 @property (nonatomic, strong) NSString *totalFormat;
 
 /**
-* You can define a custom time format using the `stringWithFormat` notation
-* for float values. By default it will use @"%.5fs", resulting in "1.34245s"
-* for example.
-*/
+ * You can define a custom time format using the `stringWithFormat` notation
+ * for float values. By default it will use @"%.5fs", resulting in "1.34245s"
+ * for example.
+ */
 @property (nonatomic, strong) NSString *timeFormat;
 
 /**
-* In case you want to output the time in MS or Minutes rather then seconds,
-* use the multiplier (e.g. 1000 for MS).
-*/
+ * In case you want to output the time in MS or Minutes rather then seconds,
+ * use the multiplier (e.g. 1000 for MS).
+ */
 @property (nonatomic) CGFloat timeMultiplier;
 
 @end
