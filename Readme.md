@@ -50,7 +50,7 @@ MGBenchEnd(@"Test"); // << BENCHMARK [Test/total] 0.02s (2 steps, average 0.01s)
 
 That's it. For most cases that should be enough. However if you want to customize the output that's possible as well.
 
-## Class methods
+## Using Class Methods
 
 The aforementioned macros use the following class methods under the hood:
 
