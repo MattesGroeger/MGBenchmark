@@ -97,7 +97,7 @@ def send_report(excludes)
   excludes.each do |exclude|
     command << " -e '#{exclude}'"
   end
-  run("ls -al #{gcov_dir}")
+  run("ls -al #{gcov_dir}", "Directory listing failed")
   run(command, "Could not send report")
 end
 
@@ -122,7 +122,7 @@ def build_settings_per_target(workspace, scheme)
   result
 end
 
-def run(command, message)
+def run(command, message = "")
   puts "\n$ #{command}\n\n"
   process = IO.popen(command) do |io|
     while line = io.gets
