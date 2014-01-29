@@ -86,24 +86,23 @@ def generate_gcov(gcov_dir)
   Dir["#{gcov_dir}/*.gcda"].each do |file|
     command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
   end
-  `#{command}`
+  run(command, "Generate GCOV");
 end
 
 def copy_gcov_to_project_dir(gcov_dir)
-  `cp -r '#{gcov_dir}' gcov`
+  run("cp -r '#{gcov_dir}' gcov", "Copy GCOV to project dir failed!")
 end
 
 def send_report(excludes)
-  puts "send report..."
   command = "coveralls --verbose"
   excludes.each do |exclude|
     command << " -e '#{exclude}'"
   end
-  `#{command}`
+  run(command, "Could not send report")
 end
 
 def remove_gcov_dir
-  `rm -r gcov`
+  run("rm -r gcov", "Removing GCOV failed!")
 end
 
 def build_settings_per_target(workspace, scheme)
@@ -121,4 +120,19 @@ def build_settings_per_target(workspace, scheme)
     end
   end
   result
+end
+
+def run(command, message)
+  puts "\n$ #{command}\n\n"
+  process = IO.popen(command) do |io|
+    while line = io.gets
+      puts line
+    end
+    io.close
+  end
+  if $?.to_i != 0
+    fail message.red
+  elsif
+    puts "\n==== " << "SUCCESS".green << " ====\n\n"
+  end
 end
