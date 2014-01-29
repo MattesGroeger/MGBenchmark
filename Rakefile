@@ -97,11 +97,11 @@ def send_report(excludes)
   excludes.each do |exclude|
     command << " -e '#{exclude}'"
   end
+  run("ls -al #{gcov_dir}")
   run(command, "Could not send report")
 end
 
 def remove_gcov_dir
-  run("ls -al #{gcov_dir}")
   run("rm -r gcov", "Removing GCOV failed!")
 end
 
