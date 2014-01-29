@@ -101,6 +101,7 @@ def send_report(excludes)
 end
 
 def remove_gcov_dir
+  run("ls -al #{gcov_dir}")
   run("rm -r gcov", "Removing GCOV failed!")
 end
 
