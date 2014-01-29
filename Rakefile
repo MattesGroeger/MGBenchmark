@@ -81,7 +81,7 @@ def gcov_dir
 end
 
 def generate_gcov(gcov_dir)
-  command = "la #{gcov_dir} && cd #{gcov_dir}"
+  command = "ls -al #{gcov_dir} && cd #{gcov_dir}"
   Dir["#{gcov_dir}/*.gcda"].each do |file|
     command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
   end
