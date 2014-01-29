@@ -81,12 +81,11 @@ def gcov_dir
 end
 
 def generate_gcov(gcov_dir)
-  puts "generate gcov files..."
-  command = "cd #{gcov_dir}"
+  command = "la #{gcov_dir} && cd #{gcov_dir}"
   Dir["#{gcov_dir}/*.gcda"].each do |file|
     command << " && gcov-4.2 '#{file}' -o '#{gcov_dir}'"
   end
-  run(command, "Generate GCOV");
+  run(command, "Generating GCOV failed");
 end
 
 def copy_gcov_to_project_dir(gcov_dir)
