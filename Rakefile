@@ -59,7 +59,7 @@ end
 def compile(workspace, scheme, is_test)
   test = is_test ? "test" : ""
 
-  command = "xctool #{test} -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator"
+  command = "xcodebuild #{test} -workspace #{workspace} -scheme #{scheme} -configuration Release -sdk iphonesimulator"
   command << " ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES" 
 
   IO.popen(command) do |io|
