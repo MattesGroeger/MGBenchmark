@@ -74,6 +74,21 @@ describe(@"MGBenchmark", ^
 		[MGBenchmark finish:@"foo"];
 	});
 
+    it(@"should assign to alternate target", ^
+       {
+           id <MGBenchmarkTarget> defaultTarget = (id <MGBenchmarkTarget>) [KWMock nullMockForProtocol:@protocol(MGBenchmarkTarget)];
+
+           [MGBenchmark setDefaultTarget:defaultTarget];
+
+           id <MGBenchmarkTarget> alternateTarget = (id <MGBenchmarkTarget>) [KWMock nullMockForProtocol:@protocol(MGBenchmarkTarget)];
+
+           MGBenchmarkSession *result = [MGBenchmark start:@"foo" target:alternateTarget];
+
+           [[(NSObject *)result.target should] equal:alternateTarget];
+
+           [MGBenchmark finish:@"foo"];
+       });
+
 	it(@"should be able to access session from different thread", ^
 	{
 		__block MGBenchmarkSession *session = [MGBenchmark start:@"foo"];
