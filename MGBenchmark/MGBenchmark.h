@@ -26,7 +26,7 @@
 // It also runs [MGBenchmarkSession total] for log output prior to finishing
 #ifdef DEBUG
     #define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
-    #define MGBenchStartTarget(__SESSION__, __TARGET__) [MGBenchmark start:__SESSION__ target:__TARGET]
+    #define MGBenchStartTarget(__SESSION__, __TARGET__) [MGBenchmark start:__SESSION__ target:__TARGET__]
     #define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
 #else
     #define MGBenchStart(__SESSION__) do {} while (0)
