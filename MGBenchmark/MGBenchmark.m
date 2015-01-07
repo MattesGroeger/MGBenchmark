@@ -47,16 +47,22 @@ static dispatch_queue_t benchmarkQueue;
 	});
 }
 
+
 + (MGBenchmarkSession *)start:(NSString *)sessionName
 {
-	__block MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:defaultTarget];
+    return [self start:sessionName target:defaultTarget];
+}
 
-	dispatch_sync(benchmarkQueue, ^
-	{
-		sessions[sessionName] = session;
-	});
++ (MGBenchmarkSession *)start:(NSString *)sessionName target:(id<MGBenchmarkTarget>)target
+{
+    __block MGBenchmarkSession *session = [[MGBenchmarkSession alloc] initWithName:sessionName andTarget:target];
 
-	return session;
+    dispatch_sync(benchmarkQueue, ^
+    {
+        sessions[sessionName] = session;
+    });
+    
+    return session;
 }
 
 + (MGBenchmarkSession *)session:(NSString *)sessionName

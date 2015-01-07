@@ -25,11 +25,13 @@
 // Macro version. When DEBUG is not set, method is ignored
 // It also runs [MGBenchmarkSession total] for log output prior to finishing
 #ifdef DEBUG
-	#define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
-	#define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
+    #define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
+    #define MGBenchStartTarget(__SESSION__, __TARGET__) [MGBenchmark start:__SESSION__ target:__TARGET__]
+    #define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
 #else
-	#define MGBenchStart(__SESSION__) do {} while (0)
-	#define MGBenchEnd(__SESSION__) do {} while (0)
+    #define MGBenchStart(__SESSION__) do {} while (0)
+    #define MGBenchStartTarget(__SESSION__, __TARGET__) do {} while (0)
+    #define MGBenchEnd(__SESSION__) do {} while (0)
 #endif
 
 @protocol MGBenchmarkTarget;
@@ -48,6 +50,12 @@
  * of the session is returned.
  */
 + (MGBenchmarkSession *)start:(NSString *)sessionName;
+
+/**
+ * Starts a new session and assigns the target. An instance
+ * of the session is returned.
+ */
++ (MGBenchmarkSession *)start:(NSString *)sessionName target:(id<MGBenchmarkTarget>)target;
 
 /**
  * Returns session by name. You need to start it first!
