@@ -31,7 +31,7 @@ Easily measure code execution times. This is especially interesting for load ope
 
 ## Quick Guide
 
-The quickest way is to use the provided macros. They give you the basic console log functionality with very little code. The benchmark will only work when `DEBUG` is set.
+The quickest way is to use the provided macros. They give you the basic console log functionality with very little code. The benchmark will only work when `MGBENCHMARK` is set, this is done by default, when `DEBUG` is set.
 
 ```obj-c
 #import "MGBenchmark.h"

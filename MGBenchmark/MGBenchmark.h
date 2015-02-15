@@ -22,9 +22,14 @@
 
 #import <Foundation/Foundation.h>
 
-// Macro version. When DEBUG is not set, method is ignored
-// It also runs [MGBenchmarkSession total] for log output prior to finishing
+// To enable benchmarking, define MGBENCHMARK, in DEBUG this is done by default.
 #ifdef DEBUG
+  #define MGBENCHMARK = 1
+#endif
+
+// Macro version. When MGBENCHMARK is not set, method is ignored
+// It also runs [MGBenchmarkSession total] for log output prior to finishing
+#ifdef MGBENCHMARK
     #define MGBenchStart(__SESSION__) [MGBenchmark start:__SESSION__]
     #define MGBenchStartTarget(__SESSION__, __TARGET__) [MGBenchmark start:__SESSION__ target:__TARGET__]
     #define MGBenchEnd(__SESSION__) [[MGBenchmark session:__SESSION__] total];[MGBenchmark finish:__SESSION__]
