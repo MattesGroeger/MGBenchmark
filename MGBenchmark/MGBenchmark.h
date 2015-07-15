@@ -73,4 +73,8 @@
  */
 + (void)finish:(NSString *)sessionName;
 
+/**
+ * Renames session by name, also changes the name property of the session
+ */
++ (void)renameSession:(NSString *)sessionName toName:(NSString *)newSessionName;
 @end
