@@ -39,6 +39,7 @@
 		_lastInterim = _startTime = [NSDate date];
 		_name = name;
 		_target = target;
+		_identifier = @(arc4random_uniform(UINT_MAX));
 	}
     
 	return self;
