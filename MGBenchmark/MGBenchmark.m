@@ -86,12 +86,14 @@ static dispatch_queue_t benchmarkQueue;
 }
 
 + (void)renameSession:(NSString *)sessionName toName:(NSString *)newSessionName {
-    dispatch_sync(benchmarkQueue, ^{
-        MGBenchmarkSession *session = sessions[sessionName];
-        session.name = newSessionName;
-        sessions[newSessionName] = session;
-        [sessions removeObjectForKey:sessionName];
-    });
+	if (![newSessionName isEqualToString:sessionName]) {
+		dispatch_sync(benchmarkQueue, ^{
+			MGBenchmarkSession *session = sessions[sessionName];
+			[sessions removeObjectForKey:sessionName];
+			session.name = newSessionName;
+			sessions[newSessionName] = session;
+		});
+	}
 }
 
 @end
