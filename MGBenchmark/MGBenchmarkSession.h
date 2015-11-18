@@ -42,8 +42,8 @@
 
 @interface MGBenchmarkSession : NSObject
 {
-	NSDate *_startTime;
-	NSDate *_lastInterim;
+	CFTimeInterval _startTime;
+	CFTimeInterval _lastInterim;
 }
 
 @property (nonatomic) NSString *name;

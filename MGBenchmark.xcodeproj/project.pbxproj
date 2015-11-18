@@ -30,6 +30,7 @@
 		ADFD2C0D16FF090900A75E0A /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFD2C0B16FF090900A75E0A /* MainStoryboard_iPad.storyboard */; };
 		ADFD2C1016FF090900A75E0A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFD2C0F16FF090900A75E0A /* ViewController.m */; };
 		ADFD2C1616FF0A3800A75E0A /* libMGBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB4F8816FCBA7A00A9CA26 /* libMGBenchmark.a */; };
+		BDE4BC791BFCD7B7004DA325 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE4BC781BFCD7B7004DA325 /* QuartzCore.framework */; };
 		BF8D907568738BF90B0C6690 /* MGConsoleSummaryOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9E9A637C2B7D227D4E9B /* MGConsoleSummaryOutput.m */; };
 		BF8D90A1176B4BA518CB93A5 /* MGConsoleSummaryOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E22101B25570D94EB3C /* MGConsoleSummaryOutput.h */; };
 		BF8D91BB4AD9BB858C8AEA2C /* MGBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D985791FC705006A9A5C4 /* MGBenchmark.m */; };
@@ -107,6 +108,7 @@
 		ADFD2C0C16FF090900A75E0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		ADFD2C0E16FF090900A75E0A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ADFD2C0F16FF090900A75E0A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BDE4BC781BFCD7B7004DA325 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF8D92987D97801EC52DA95A /* MGBenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBenchmark.h; sourceTree = "<group>"; };
 		BF8D946D5AF5F400B44DF4A8 /* MGConsoleUtilSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConsoleUtilSpec.m; sourceTree = "<group>"; };
 		BF8D985791FC705006A9A5C4 /* MGBenchmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBenchmark.m; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE4BC791BFCD7B7004DA325 /* QuartzCore.framework in Frameworks */,
 				21FB4F8C16FCBA7A00A9CA26 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +185,7 @@
 		21FB4F8A16FCBA7A00A9CA26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDE4BC781BFCD7B7004DA325 /* QuartzCore.framework */,
 				21FB4F8B16FCBA7A00A9CA26 /* Foundation.framework */,
 				21FB4F9A16FCBA7B00A9CA26 /* SenTestingKit.framework */,
 				21FB4F9C16FCBA7B00A9CA26 /* UIKit.framework */,
@@ -321,7 +325,7 @@
 			name = MGBenchmarkTests;
 			productName = MGBenchmarkTests;
 			productReference = 21FB4F9916FCBA7B00A9CA26 /* MGBenchmarkTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		ADFD2BF016FF090800A75E0A /* MGBenchmarkExample */ = {
 			isa = PBXNativeTarget;

@@ -3,6 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.3.0"
   s.summary      = "This library provides an easy way to measure execution time in code."
   s.homepage     = "https://github.com/MattesGroeger/MGBenchmark"
+  s.framework    = 'QuartzCore'
   s.license      = 'MIT'
   s.author       = { "Mattes Groeger" => "info@mattes-groeger.de" }
   s.source       = { :git => "https://github.com/MattesGroeger/MGBenchmark.git", :tag => s.version.to_s }
