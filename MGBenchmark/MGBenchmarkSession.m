@@ -20,63 +20,61 @@
  * THE SOFTWARE.
  */
 
+#import <QuartzCore/QuartzCore.h>
 #import "MGBenchmarkSession.h"
 #import "MGBenchmarkTarget.h"
 
 @implementation MGBenchmarkSession
 
-- (id)init
-{
+- (id)init {
 	return [self initWithName:nil andTarget:nil];
 }
 
-- (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target
-{
+- (id)initWithName:(NSString *)name andTarget:(id <MGBenchmarkTarget>)target {
 	self = [super init];
-    
-	if (self)
-	{
-		_lastInterim = _startTime = [NSDate date];
+
+	if (self) {
+		_lastInterim = _startTime = CACurrentMediaTime();
 		_name = name;
 		_target = target;
+		_identifier = @(arc4random_uniform(UINT_MAX));
 	}
-    
+
 	return self;
 }
 
-- (NSTimeInterval)averageTime
-{
-	if (_stepCount == 0)
+- (NSTimeInterval)averageTime {
+	if (_stepCount == 0) {
 		return 0;
-    
-	return [_lastInterim timeIntervalSinceDate:_startTime] / _stepCount;
+	}
+
+	return (_lastInterim - _startTime) / _stepCount;
 }
 
-- (NSTimeInterval)step:(NSString *)step
-{
+- (NSTimeInterval)step:(NSString *)step {
 	NSTimeInterval timePassed = [self timePassedSince:_lastInterim];
-	_lastInterim = [NSDate date];
+	_lastInterim = CACurrentMediaTime();
 	_stepCount++;
-    
-	if (_target && [_target respondsToSelector:@selector(passedTime:forStep:inSession:)])
+
+	if (_target && [_target respondsToSelector:@selector(passedTime:forStep:inSession:)]) {
 		[_target passedTime:timePassed forStep:step inSession:self];
-    
+	}
+
 	return timePassed;
 }
 
-- (NSTimeInterval)total
-{
+- (NSTimeInterval)total {
 	NSTimeInterval timePassed = [self timePassedSince:_startTime];
-    
-	if (_target && [_target respondsToSelector:@selector(totalTime:inSession:)])
+
+	if (_target && [_target respondsToSelector:@selector(totalTime:inSession:)]) {
 		[_target totalTime:timePassed inSession:self];
-	
+	}
+
 	return timePassed;
 }
 
-- (NSTimeInterval)timePassedSince:(NSDate *)date
-{
-	return [[NSDate date] timeIntervalSinceDate:date];
+- (NSTimeInterval)timePassedSince:(CFTimeInterval)timeInterval {
+	return CACurrentMediaTime() - timeInterval;
 }
 
 @end
